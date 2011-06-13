@@ -1,14 +1,5 @@
 # See following for more information: http://www.infinitered.com/blog/?p=19
 
-
-# Path ------------------------------------------------------------
-export PATH=/opt/local/bin:/opt/local/sbin:/usr/local/pgsql/bin:$PATH  # OS-X Specific, with MacPorts installed
-
-if [ -d ~/bin ]; then
-	export PATH=:~/bin:$PATH  # add your bin folder to the path, if you have it.  It's a good place to add all your scripts
-fi
-
-
 # Load in .bashrc -------------------------------------------------
 source ~/.bashrc
 
@@ -19,7 +10,7 @@ echo -ne "${COLOR_GRAY}Uptime: "; uptime
 echo -ne "${COLOR_GRAY}Server time is: "; date
 
 
-alias nr='sudo kill -HUP `cat /opt/nginx/logs/nginx.pid`'
+#alias nr='sudo kill -HUP `cat /opt/nginx/logs/nginx.pid`'
 
 # Notes: ----------------------------------------------------------
 # When you start an interactive shell (log in, open terminal or iTerm in OS X, 
@@ -39,15 +30,4 @@ alias nr='sudo kill -HUP `cat /opt/nginx/logs/nginx.pid`'
 ##
 # Your previous /Users/stephen/.bash_profile file was backed up as /Users/stephen/.bash_profile.macports-saved_2011-01-12_at_11:48:26
 ##
-
-# Thanks for the awesome idea batasrki
-function gemdir {
-  if [[ -z "$1" ]] ; then
-    echo "gemdir expects a parameter, which should be a valid RVM Ruby selector"
-  else
-    rvm "$1"
-    cd $(rvm gemdir)
-    pwd
-  fi
-}
 

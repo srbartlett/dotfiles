@@ -6,6 +6,14 @@ export RUBYOPT=rubygems
 
 export R_HOME=/Library/Frameworks/R.framework/Resources
 
+
+# Path ------------------------------------------------------------
+export PATH=/opt/local/bin:/opt/local/sbin:/usr/local/pgsql/bin:$PATH  # OS-X Specific, with MacPorts installed
+
+if [ -d ~/bin ]; then
+	export PATH=:~/bin:$PATH  # add your bin folder to the path, if you have it.  It's a good place to add all your scripts
+fi
+
 # Colors ----------------------------------------------------------
 export TERM=xterm-color
 
