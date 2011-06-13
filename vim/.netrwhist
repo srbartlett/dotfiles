@@ -1,0 +1,10 @@
+let g:netrw_dirhistmax  =10
+let g:netrw_dirhist_cnt =8
+let g:netrw_dirhist_1='/Users/stephen/.rvm/gems/ruby-1.9.1-p378@chargeiq_terminal/gems/chronic-0.3.0'
+let g:netrw_dirhist_2='/Users/stephen/.rvm/gems/ruby-1.9.2-p136@chargeiq_server/gems/googlecharts-1.6.1'
+let g:netrw_dirhist_3='/Users/stephen/.rvm/gems/ruby-1.9.1-p378@chargeiq_terminal/gems/dm-core-1.0.2'
+let g:netrw_dirhist_4='/Users/stephen/work/chargeiq-config/terminal/_shared'
+let g:netrw_dirhist_5='/Users/stephen/work/jetstar/gits/rails_test_box/cookbooks'
+let g:netrw_dirhist_6='/Users/stephen/work/jetstar/gits/chef-101'
+let g:netrw_dirhist_7='/Users/stephen/work/jetstar/gits/37s_cookbooks/passenger'
+let g:netrw_dirhist_8='/Users/stephen/dev/gits/railscasts-episodes/episode-250/auth'

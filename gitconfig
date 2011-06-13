@@ -30,3 +30,7 @@
 [user]
 	name = Stephen Bartlett
 	email = stephenb@rtlett.org
+[core]
+	edit = mvim
+	editor = mvim
+  
