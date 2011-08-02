@@ -143,3 +143,7 @@ nmap <a-F7> :Ack -w <c-r><c-w><cr>
 " let Tlist_Show_One_File = 1       " Only show tags for current buffer
 " let Tlist_Enable_Fold_Column = 0  " no fold column (only showing one file)
 
+" Bubble lines 
+nmap <C-Up> [e
+nmap <C-Down> ]e
+
