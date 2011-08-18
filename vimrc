@@ -43,13 +43,13 @@ set laststatus=2
 "set undofile
 
 
-" 
+"
 "
 set tags+=.tags
 let g:autotagTagsFile=".tags"
 
 "draw tabs & trailing spaces
-autocmd BufNewFile,BufRead * set list listchars=tab:▸\ 
+autocmd BufNewFile,BufRead * set list listchars=tab:▸\
 set list listchars=tab:\|_,trail:.
 
 autocmd BufNewFile,BufRead * match Error /\(  \+\t\@=\)\|\(^\(\t\+\)\zs \ze[^ *]\)\|\([^ \t]\zs\s\+$\)/
@@ -74,11 +74,10 @@ nnoremap k gk
 
 " save file on lose of focus
 au FocusLost * :wa
+au FocusLost * :call <SID>StripTrailingWhitespaces()
 
 
 :tabnext
-
-
 
 
 "" tab left & right
@@ -143,7 +142,19 @@ nmap <a-F7> :Ack -w <c-r><c-w><cr>
 " let Tlist_Show_One_File = 1       " Only show tags for current buffer
 " let Tlist_Enable_Fold_Column = 0  " no fold column (only showing one file)
 
-" Bubble lines 
+" Bubble lines
 nmap <C-Up> [e
 nmap <C-Down> ]e
+
+function! <SID>StripTrailingWhitespaces()
+    " Preparation: save last search, and cursor position.
+    let _s=@/
+    let l = line(".")
+    let c = col(".")
+    " Do the business:
+    %s/\s\+$//e
+    " Clean up: restore previous search history, and cursor position
+    let @/=_s
+    call cursor(l, c)
+endfunction
 
