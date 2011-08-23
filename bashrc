@@ -19,7 +19,7 @@ export TERM=xterm-color
 
 export GREP_OPTIONS='--color=auto' GREP_COLOR='1;32'
 
-export CLICOLOR=1 
+export CLICOLOR=1
 
 alias ls='ls -G'  # OS-X SPECIFIC - the -G command in OS-X is for colors, in Linux it's no groups
 #alias ls='ls --color=auto' # For linux, etc
@@ -63,10 +63,12 @@ if [ -f /etc/bash_completion ]; then
 fi
 
 
-
 # Prompts ----------------------------------------------------------
-export PS1="\[${COLOR_GREEN}\]\w > \[${COLOR_NC}\]"  # Primary prompt with only a path
-# export PS1="\[${COLOR_GRAY}\]\u@\h \[${COLOR_GREEN}\]\w > \[${COLOR_NC}\]"  # Primary prompt with user, host, and path 
+[[ -r $rvm_path/scripts/completion ]] && . $rvm_path/scripts/completion # for RVM completion
+if [ -f /usr/local/git/contrib/completion/git-completion.bash ]; then source /usr/local/git/contrib/completion/git-completion.bash; fi # for Git completion
+#export PS1="\[${COLOR_GREEN}\]\w > \[${COLOR_NC}\]"  # Primary prompt with only a path
+# export PS1="\[${COLOR_GRAY}\]\u@\h \[${COLOR_GREEN}\]\w > \[${COLOR_NC}\]"  # Primary prompt with user, host, and path
+export PS1="\[\033[01;34m\]\$(~/.rvm/bin/rvm-prompt) \[\033[01;32m\]\w\[\033[00;33m\]\$(__git_ps1 \" (%s)\") \[\033[01;36m\]\$\[\033[00m\] "
 
 # This runs before the prompt and sets the title of the xterm* window.  If you set the title in the prompt
 # weird wrapping errors occur on some systems, so this method is superior
@@ -78,7 +80,7 @@ export PS4='+'     # Prompt 4
 
 function xtitle {  # change the title of your xterm* window
   unset PROMPT_COMMAND
-  echo -ne "\033]0;$1\007" 
+  echo -ne "\033]0;$1\007"
 }
 
 
@@ -98,7 +100,7 @@ fi
 
 alias show='cat ~/.dirs'
 save (){
-	command sed "/!$/d" ~/.dirs > ~/.dirs1; \mv ~/.dirs1 ~/.dirs; echo "$@"=\"`pwd`\" >> ~/.dirs; source ~/.dirs ; 
+	command sed "/!$/d" ~/.dirs > ~/.dirs1; \mv ~/.dirs1 ~/.dirs; echo "$@"=\"`pwd`\" >> ~/.dirs; source ~/.dirs ;
 }
 source ~/.dirs  # Initialization for the above 'save' facility: source the .sdirs file
 shopt -s cdable_vars # set the bash option so that no '$' is required when using the above facility
@@ -111,7 +113,6 @@ alias la='ls -a'
 alias lla='ls -lah'
 
 # Misc
-alias g='grep -i'  # Case insensitive grep
 alias f='find . -iname'
 alias ducks='du -cksh * | sort -rn|head -11' # Lists folders and files sizes in the current folder
 alias top='top -o cpu'
@@ -126,7 +127,7 @@ alias profileme="history | awk '{print \$2}' | awk 'BEGIN{FS=\"|\"}{print \$1}' 
 
 # Editors ----------------------------------------------------------
 export EDITOR='mvim'
-alias gvim="mvim" 
+alias gvim="mvim"
 
 if [[ -s "$HOME/.rvm/scripts/rvm" ]]  ; then source "$HOME/.rvm/scripts/rvm" ; fi
 
@@ -146,7 +147,7 @@ alias bi="b install"
 alias bu="b update"
 alias be="b exec"
 alias binit="bi && b package && echo 'vendor/ruby' >> .gitignore"
- 
+
 # alias 'g' to git. If no args supplied, do "git status"
 function g
 {
