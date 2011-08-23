@@ -43,7 +43,7 @@ set laststatus=2
 "set undofile
 
 " \ is the default leader character
-let mapleader = ";"
+let mapleader = ","
 
 
 "
