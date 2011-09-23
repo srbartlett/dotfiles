@@ -9,6 +9,7 @@
 	patch = format-patch --stdout
 	show-branches = !git show-branch origin/master $(git branch | cut -c3-)
 	root = rev-parse --show-toplevel
+	ctags = !.git/hooks/ctags
 [color]
 	branch = auto
 	diff = auto
@@ -34,3 +35,5 @@
 	edit = mvim
 	editor = mvim
   
+[init]
+	templatedir = ~/.git_template
