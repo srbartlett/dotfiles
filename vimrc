@@ -48,8 +48,8 @@ let mapleader = ","
 
 "
 "
-set tags+=.tags
-let g:autotagTagsFile=".tags"
+"set tags+=.tags
+"let g:autotagTagsFile=".tags"
 
 "draw tabs & trailing spaces
 autocmd BufNewFile,BufRead * set list listchars=tab:▸\
@@ -59,7 +59,7 @@ autocmd BufNewFile,BufRead * match Error /\(  \+\t\@=\)\|\(^\(\t\+\)\zs \ze[^ *]
                              match Error /\(  \+\t\@=\)\|\(^\(\t\+\)\zs \ze[^ *]\)\|\([^ \t]\zs\s\+$\)/
 
 " open NERDTree in every tab
-autocmd VimEnter * NERDTree
+" autocmd VimEnter * NERDTree
 " autocmd BufEnter * NERDTreeMirror
 autocmd VimEnter * wincmd p
 
@@ -149,3 +149,10 @@ nmap <a-F7> :Ack -w <c-r><c-w><cr>
 nmap <C-Up> [e
 nmap <C-Down> ]e
 
+" Use _ as a word-separator
+set iskeyword-=_
+
+" Highlight the status line
+highlight StatusLine ctermfg=blue ctermbg=yellow
+
+vmap <leader>bd "td?describe<CR>obefore do<CR>end<CR><ESC>kk"tp
