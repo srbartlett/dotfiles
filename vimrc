@@ -43,7 +43,7 @@ set laststatus=2
 "set undofile
 
 " \ is the default leader character
-let mapleader = ","
+let mapleader = ";"
 
 
 "
@@ -154,5 +154,8 @@ set iskeyword-=_
 
 " Highlight the status line
 highlight StatusLine ctermfg=blue ctermbg=yellow
+
+" Copy path - handy for pasting the filename in the terminal for running rspec
+nmap <leader>cp :CopyPath<cr>
 
 vmap <leader>bd "td?describe<CR>obefore do<CR>end<CR><ESC>kk"tp
