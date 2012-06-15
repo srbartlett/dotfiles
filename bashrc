@@ -8,7 +8,7 @@ export R_HOME=/Library/Frameworks/R.framework/Resources
 
 
 # Path ------------------------------------------------------------
-export PATH=/usr/local/bin:$PATH
+export PATH=/usr/local/bin:/usr/local/sbin:$PATH
 
 if [ -d ~/bin ]; then
 	export PATH=:~/bin:$PATH  # add your bin folder to the path, if you have it.  It's a good place to add all your scripts
@@ -64,11 +64,10 @@ fi
 
 
 # Prompts ----------------------------------------------------------
-[[ -r $rvm_path/scripts/completion ]] && . $rvm_path/scripts/completion # for RVM completion
 if [ -f /usr/local/bin/git-completion.bash ]; then source /usr/local/bin/git-completion.bash; fi # for Git completion
 #export PS1="\[${COLOR_GREEN}\]\w > \[${COLOR_NC}\]"  # Primary prompt with only a path
 # export PS1="\[${COLOR_GRAY}\]\u@\h \[${COLOR_GREEN}\]\w > \[${COLOR_NC}\]"  # Primary prompt with user, host, and path
-export PS1="\[\033[01;34m\]\$(~/.rvm/bin/rvm-prompt) \[\033[01;32m\]\w\[\033[00;33m\]\$(__git_ps1 \" (%s)\") \[\033[01;36m\]\$\[\033[00m\] "
+export PS1="\[\033[01;32m\]\w\[\033[00;33m\]\$(__git_ps1 \" (%s)\") \[\033[01;36m\]\$\[\033[00m\] "
 
 # This runs before the prompt and sets the title of the xterm* window.  If you set the title in the prompt
 # weird wrapping errors occur on some systems, so this method is superior
@@ -123,11 +122,11 @@ alias df='df -h'
 # Shows most used commands, cool script I got this from: http://lifehacker.com/software/how-to/turbocharge-your-terminal-274317.php
 alias profileme="history | awk '{print \$2}' | awk 'BEGIN{FS=\"|\"}{print \$1}' | sort | uniq -c | sort -n | tail -n 20 | sort -nr"
 
-
+alias r="rvm use 1.8.7 && /Users/stephen/work/rea/rea-env/bin/rea-env"
+alias r_up="cd /Users/stephen/work/rea/rea-env; g pull"
 
 # Editors ----------------------------------------------------------
 export EDITOR='mvim'
-alias gvim="mvim"
 
 if [[ -s "$HOME/.rvm/scripts/rvm" ]]  ; then source "$HOME/.rvm/scripts/rvm" ; fi
 
@@ -148,6 +147,11 @@ alias bu="b update"
 alias be="b exec"
 alias binit="bi && b package && echo 'vendor/ruby' >> .gitignore"
 
+# rails
+alias rc='./script/rails c $@'
+alias rs='./script/rails s $@'
+alias rg='./script/rails g $@'
+
 # alias 'g' to git. If no args supplied, do "git status"
 function g
 {
@@ -158,3 +162,8 @@ function g
   fi
 }
 
+alias ec2_work="source $HOME/.ec2/rea/env"
+alias ec2_pers="source $HOME/.ec2/pers/env"
+
+# use vi bindings
+set -o vi

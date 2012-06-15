@@ -1,3 +1,6 @@
+" iTerm colour support
+set t_Co=256
+
 syntax on
 call pathogen#runtime_append_all_bundles()
 set number
@@ -34,26 +37,28 @@ set directory=/tmp
 set noswapfile
 set nobackup
 set showcmd
-set showmode
 set cursorline
 set ruler
 set backspace=indent,eol,start
 set laststatus=2
+set wildignore+=vendor/bundle/**,coverage/**,tmp/**,reports/**,solr/**
+set showmode!
+let g:CommandTMaxFiles=20000
 "set relativenumber
 "set undofile
 
 " \ is the default leader character
 let mapleader = ";"
 
+"
+"
+set tags+=.git/tags
 
-"
-"
-"set tags+=.tags
-"let g:autotagTagsFile=".tags"
+"let g:autotagTagsFile="TAGS"
 
 "draw tabs & trailing spaces
 autocmd BufNewFile,BufRead * set list listchars=tab:▸\
-set list listchars=tab:\|_,trail:.
+set list listchars=tab:\ \ ,trail:·
 
 autocmd BufNewFile,BufRead * match Error /\(  \+\t\@=\)\|\(^\(\t\+\)\zs \ze[^ *]\)\|\([^ \t]\zs\s\+$\)/
                              match Error /\(  \+\t\@=\)\|\(^\(\t\+\)\zs \ze[^ *]\)\|\([^ \t]\zs\s\+$\)/
@@ -97,14 +102,15 @@ map <leader>e :NERDTreeToggle<cr>
 map <leader>r :NERDTreeFind<cr>
 
 
-" ctrl+f to FuzzyFinder (recursive)
-nmap <C-f> :FuzzyFinderBuffer<cr>
 nmap <leader>b :FuzzyFinderBuffer<cr>
 nmap <leader>f :FuzzyFinderFileWithFullCwd<cr>
 nmap <leader>F :FuzzyFinderTaggedFile<cr>
 nmap <leader>g :FuzzyFinderTag<cr>
 
+" Finder - options include  CTRL-P and CommandT
 nmap <leader>t :CommandT<cr>
+" nmap <leader>t <C-p>
+
 " Ack
 nnoremap <leader>a :Ack
 
@@ -150,7 +156,7 @@ nmap <C-Up> [e
 nmap <C-Down> ]e
 
 " Use _ as a word-separator
-set iskeyword-=_
+" set iskeyword-=_
 
 " Highlight the status line
 highlight StatusLine ctermfg=blue ctermbg=yellow
@@ -159,3 +165,34 @@ highlight StatusLine ctermfg=blue ctermbg=yellow
 nmap <leader>cp :CopyPath<cr>
 
 vmap <leader>bd "td?describe<CR>obefore do<CR>end<CR><ESC>kk"tp
+
+" Remove the tool bar
+if has("gui_running")
+    set guioptions=egmrt
+endif
+
+imap jj <Esc>
+
+" Auto resize the active window
+"function! AutoResize()
+"  let w = &columns*55/100
+"  exec 'vertical resize '.w
+"endfunction
+"autocmd WinEnter * call AutoResize()
+
+" relative line numbers
+" http://jeffkreeftmeijer.com/2012/relative-line-numbers-in-vim-for-super-fast-movement/
+"
+"function! NumberToggle()
+  "if(&relativenumber == 1)
+    "set number
+  "else
+    "set relativenumber
+  "endif
+"endfunc
+
+"nnoremap <C-n> :call NumberToggle()<cr>
+":au FocusLost * :set number
+":au FocusGained * :set relativenumber
+"autocmd InsertEnter * :set number
+"autocmd InsertLeave * :set relativenumber
