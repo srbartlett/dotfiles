@@ -1,54 +1,238 @@
 " iTerm colour support
 set t_Co=256
 
+set rtp+=~/.vim/bundle/vundle/
+call vundle#rc()
+
+" let Vundle manage Vundle
+" required!
+Bundle 'gmarik/vundle'
+
+Bundle 'wincent/Command-T'
+Bundle 'ZoomWin'
+Bundle 'kien/ctrlp.vim'
+
+" UI Additions
+"Bundle 'mutewinter/vim-indent-guides'
+Bundle 'Lokaltog/vim-powerline'
+Bundle 'scrooloose/nerdtree'
+"Bundle 'Rykka/colorv.vim'
+"Bundle 'nanotech/jellybeans.vim'
+"Bundle 'tomtom/quickfixsigns_vim'
+" Commands
+Bundle 'scrooloose/nerdcommenter'
+Bundle 'tpope/vim-surround'
+"Bundle 'tpope/vim-speeddating'
+Bundle 'tpope/vim-fugitive'
+Bundle 'godlygeek/tabular'
+Bundle 'mileszs/ack.vim'
+"Bundle 'gmarik/sudo-gui.vim'
+"Bundle 'milkypostman/vim-togglelist'
+"Bundle 'mutewinter/swap-parameters'
+"Bundle 'keepcase.vim'
+"Bundle 'scratch.vim'
+"Bundle 'mattn/zencoding-vim'
+" Automatic Helpers
+"Bundle 'IndexedSearch'
+"Bundle 'xolox/vim-session'
+"Bundle 'Raimondi/delimitMate'
+"Bundle 'scrooloose/syntastic'
+"Bundle 'ervandew/supertab'
+"Bundle 'gregsexton/MatchTag'
+"Bundle 'Shougo/neocomplcache'
+" Snippets
+"Bundle 'garbas/vim-snipmate'
+"Bundle 'honza/snipmate-snippets'
+"Bundle 'MarcWeber/vim-addon-mw-utils'
+" Language Additions
+"   Ruby
+Bundle 'vim-ruby/vim-ruby'
+Bundle 'tpope/vim-haml'
+Bundle 'tpope/vim-rails'
+Bundle 'tpope/vim-rake'
+"   JavaScript
+Bundle 'pangloss/vim-javascript'
+Bundle 'kchmck/vim-coffee-script'
+Bundle 'leshill/vim-json'
+Bundle 'itspriddle/vim-jquery'
+"Bundle 'nono/vim-handlebars'
+"   TomDoc
+"Bundle 'mutewinter/tomdoc.vim'
+"Bundle 'jc00ke/vim-tomdoc'
+"   Other Languages
+"Bundle 'msanders/cocoa.vim'
+"Bundle 'mutewinter/taskpaper.vim'
+"Bundle 'mutewinter/nginx.vim'
+"Bundle 'timcharper/textile.vim'
+Bundle 'ChrisYip/Better-CSS-Syntax-for-Vim'
+Bundle 'acustodioo/vim-tmux'
+Bundle 'hallison/vim-markdown'
+Bundle 'xhtml.vim--Grny'
+Bundle 'groenewege/vim-less'
+" MatchIt
+"Bundle 'matchit.zip'
+"Bundle 'kana/vim-textobj-user'
+"Bundle 'nelstrom/vim-textobj-rubyblock'
+" Libraries
+"Bundle 'L9'
+"Bundle 'tpope/vim-repeat'
+"Bundle 'tomtom/tlib_vim'
+Bundle 'mathml.vim'
+
+
+
 syntax on
-call pathogen#runtime_append_all_bundles()
 set number
 filetype plugin indent on
-color molokai
 
-set encoding=utf-8
-set autoread " reload file whenever it changes on disk
-set wrapmargin=5
-set nowrap
-set formatoptions=croqln
-set formatoptions=croqln
-set tabstop=2
-set expandtab
-set cursorline
-set softtabstop=2
-set shiftwidth=2
-set ignorecase
-set smartcase
-set incsearch
-set scrolloff=3
-set sidescrolloff=5
-set wildmode=longest,list
-set nocompatible
-set autoindent
-set smartindent
-set mouse=a
-set modelines=0
-" allow status-bar windows (0-height)
-set wmh=0
-" set iskeyword-=_ \" allow underscore to delimit words"
-set backupdir=/tmp
-set directory=/tmp
+" This line MUST come before any <leader> mappings
+let mapleader = ";"
+
+" ---------------
+" Backups
+" ---------------
+"set backup
+"set backupdir=~/.vim/backup
+"set directory=~/.vim/tmp
 set noswapfile
 set nobackup
-set showcmd
-set cursorline
-set ruler
-set backspace=indent,eol,start
-set laststatus=2
-set wildignore+=vendor/bundle/**,coverage/**,tmp/**,reports/**,solr/**
-set showmode!
+
+" ---------------
+" UI
+" ---------------
+set ruler          " Ruler on
+set nu             " Line numbers on
+set nowrap         " Line wrapping off
+set laststatus=2   " Always show the statusline
+set cmdheight=2    " Make the command area two lines high
+set encoding=utf-8
+if exists('+colorcolumn')
+  set colorcolumn=80 " Color the 80th column differently
+endif
+" Disable tooltips for hovering keywords in Vim
+if exists('+ballooneval')
+  " This doesn't seem to stop tooltips for Ruby files
+  set noballooneval
+  " 100 second delay seems to be the only way to disable the tooltips
+  set balloondelay=100000
+endif
+
+" ---------------
+" Color
+" ---------------
+set background=dark
+color molokai
+
+" ---------------
+" Behaviors
+" ---------------
+syntax enable
+set autoread           " Automatically reload changes if detected
+set wildmenu           " Turn on WiLd menu
+set hidden             " Change buffer - without saving
+set history=768        " Number of things to remember in history.
+set cf                 " Enable error files & error jumping.
+set clipboard+=unnamed " Yanks go on clipboard instead.
+set autowrite          " Writes on make/shell commands
+set timeoutlen=350     " Time to wait for a command (after leader for example)
+set foldlevelstart=99  " Remove folds
+set formatoptions=crql
+set iskeyword+=$,@     " Add extra characters that are valid parts of variables
+
+" ---------------
+" Text Format
+" ---------------
+set tabstop=2
+set backspace=2  " Delete everything with backspace
+set shiftwidth=2 " Tabs under smart indent
+set cindent
+set autoindent
+set smarttab
+set expandtab
+set backspace=2
+
+" ---------------
+" Searching
+" ---------------
+set ignorecase " Case insensitive search
+set smartcase  " Non-case sensitive search
+set incsearch
+set hlsearch
+set wildignore+=*.o,*.obj,*.exe,*.so,*.dll,*.pyc,.svn,.hg,.bzr,.git,.sass-cache,*.class,*.scssc,vendor/bundle/**,coverage/**,tmp/**,reports/**,solr/**
+
+" ---------------
+" Visual
+" ---------------
+set showmatch   " Show matching brackets.
+set matchtime=2 " How many tenths of a second to blink
+
+" ---------------
+" Sounds
+" ---------------
+set noerrorbells
+set novisualbell
+set t_vb=
+
+" ---------------
+" Mouse
+" ---------------
+set mousehide  " Hide mouse after chars typed
+set mouse=a  " Mouse in all modes
+
+" Better complete options to speed it up
+set complete=.,w,b,u,U
+
+" ----------------------------------------
+" Bindings
+" ----------------------------------------
+" Fixes common typos
+command! W w
+command! Q q
+map <F1> <Esc>
+imap <F1> <Esc>
+
+
+" Disable the ever-annoying Ex mode shortcut key. Type visual my ass.
+nmap Q <nop>
+
+"set formatoptions=croqln
+"set formatoptions=croqln
+"set tabstop=2
+"set expandtab
+"set cursorline
+"set softtabstop=2
+"set shiftwidth=2
+"set ignorecase
+"set smartcase
+"set incsearch
+"set scrolloff=3
+"set sidescrolloff=5
+"set wildmode=longest,list
+"set nocompatible
+"set autoindent
+"set smartindent
+"set mouse=a
+"set modelines=0
+" allow status-bar windows (0-height)
+"set wmh=0
+" set iskeyword-=_ \" allow underscore to delimit words"
+"set backupdir=/tmp
+"set directory=/tmp
+"set showcmd
+"set cursorline
+"set ruler
+"set backspace=indent,eol,start
+"set laststatus=2
+"set showmode!
+
+" Command-T
+let g:CommandTMatchWindowAtTop=1 " show window at top
 let g:CommandTMaxFiles=20000
+nmap <leader>t :CommandT<cr>
+
 "set relativenumber
 "set undofile
 
-" \ is the default leader character
-let mapleader = ";"
 
 "
 "
@@ -67,7 +251,6 @@ autocmd BufNewFile,BufRead * match Error /\(  \+\t\@=\)\|\(^\(\t\+\)\zs \ze[^ *]
 " autocmd VimEnter * NERDTree
 " autocmd BufEnter * NERDTreeMirror
 autocmd VimEnter * wincmd p
-
 
 "nnoremap <up> <nop>
 "nnoremap <down> <nop>
@@ -108,7 +291,6 @@ nmap <leader>F :FuzzyFinderTaggedFile<cr>
 nmap <leader>g :FuzzyFinderTag<cr>
 
 " Finder - options include  CTRL-P and CommandT
-nmap <leader>t :CommandT<cr>
 " nmap <leader>t <C-p>
 
 " Ack
@@ -166,10 +348,9 @@ nmap <leader>cp :CopyPath<cr>
 
 vmap <leader>bd "td?describe<CR>obefore do<CR>end<CR><ESC>kk"tp
 
-" Remove the tool bar
-if has("gui_running")
-    set guioptions=egmrt
-endif
+" Custom Menlo font for Powerline
+" From: https://github.com/Lokaltog/vim-powerline/wiki/Patched-fonts
+set guifont=Menlo\ for\ Powerline:h12
 
 imap jj <Esc>
 
