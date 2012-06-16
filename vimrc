@@ -78,7 +78,7 @@ Bundle 'groenewege/vim-less'
 "Bundle 'tpope/vim-repeat'
 "Bundle 'tomtom/tlib_vim'
 Bundle 'mathml.vim'
-
+Bundle 'gpg.vim'
 
 
 syntax on
