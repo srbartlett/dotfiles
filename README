@@ -1,0 +1,3 @@
+Installation
+Install Vundle with git clone http://github.com/gmarik/vundle.git bundle/vundle
+Run Vim and type :BundleInstall to install the plugins with Vundle.
