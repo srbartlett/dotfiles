@@ -1,9 +1,9 @@
---- 
+---
 :verbose: true
-:sources: 
+:sources:
+- http://rubygems.org
 - http://gems.rubyforge.org
 - http://gems.github.com
-- http://dist/rubygems/
 :benchmark: false
 gem: --no-ri --no-rdoc
 :backtrace: false

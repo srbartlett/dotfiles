@@ -26,3 +26,8 @@ echo -ne "${COLOR_GRAY}Server time is: "; date
 #     .bashrc
 
 eval "$(rbenv init -)"
+
+if [ -f /usr/local/etc/bash_completion ]; then
+  . /usr/local/etc/bash_completion
+fi
+

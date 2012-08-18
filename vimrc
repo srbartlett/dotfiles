@@ -11,6 +11,7 @@ Bundle 'gmarik/vundle'
 Bundle 'wincent/Command-T'
 Bundle 'ZoomWin'
 Bundle 'kien/ctrlp.vim'
+Bundle 'LustyJuggler'
 
 " UI Additions
 "Bundle 'mutewinter/vim-indent-guides'
@@ -79,7 +80,7 @@ Bundle 'groenewege/vim-less'
 "Bundle 'tomtom/tlib_vim'
 Bundle 'mathml.vim'
 "Bundle 'gpg.vim'
-
+Bundle 'jpalardy/vim-slime'
 
 syntax on
 set number
@@ -158,7 +159,7 @@ set ignorecase " Case insensitive search
 set smartcase  " Non-case sensitive search
 set incsearch
 set hlsearch
-set wildignore+=*.o,*.obj,*.exe,*.so,*.dll,*.pyc,.svn,.hg,.bzr,.git,.sass-cache,*.class,*.scssc,vendor/bundle/**,coverage/**,tmp/**,reports/**,solr/**
+set wildignore+=*.o,*.obj,*.exe,*.so,*.dll,*.pyc,.svn,.hg,.bzr,.git,.sass-cache,*.class,*.scssc,target/**,vendor/bundle/**,vendor/ruby/**,coverage/**,tmp/**,reports/**,solr/**
 
 " ---------------
 " Visual
@@ -230,6 +231,9 @@ let g:CommandTMatchWindowAtTop=1 " show window at top
 let g:CommandTMaxFiles=20000
 nmap <leader>t :CommandT<cr>
 
+" Lusty Juggler
+nmap <leader>b :LustyJuggler<cr>
+
 "set relativenumber
 "set undofile
 
@@ -285,10 +289,10 @@ map <leader>e :NERDTreeToggle<cr>
 map <leader>r :NERDTreeFind<cr>
 
 
-nmap <leader>b :FuzzyFinderBuffer<cr>
-nmap <leader>f :FuzzyFinderFileWithFullCwd<cr>
-nmap <leader>F :FuzzyFinderTaggedFile<cr>
-nmap <leader>g :FuzzyFinderTag<cr>
+"nmap <leader>b :FuzzyFinderBuffer<cr>
+"nmap <leader>f :FuzzyFinderFileWithFullCwd<cr>
+"nmap <leader>F :FuzzyFinderTaggedFile<cr>
+"nmap <leader>g :FuzzyFinderTag<cr>
 
 " Finder - options include  CTRL-P and CommandT
 " nmap <leader>t <C-p>
@@ -377,3 +381,13 @@ imap jj <Esc>
 ":au FocusGained * :set relativenumber
 "autocmd InsertEnter * :set number
 "autocmd InsertLeave * :set relativenumber
+"
+
+command GdiffInTab tabedit %|Gdiff
+
+" vim-slim
+let g:slime_target = "tmux"
+
+
+let g:JavaImpPaths = "/Users/stephen/work/dius/oua-workflow/src/main/java"
+let g:JavaImpDataDir = "/Users/stephen/tmp"

@@ -166,4 +166,8 @@ alias ec2_work="source $HOME/.ec2/rea/env"
 alias ec2_pers="source $HOME/.ec2/pers/env"
 
 # use vi bindings
-set -o vi
+# set -o vi
+#
+#
+#ORACLE
+export DYLD_LIBRARY_PATH=/Users/stephen/work/dius/oracle/instantclient_10_2
