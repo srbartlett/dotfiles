@@ -1,0 +1,6 @@
+/Users/stephen/dev
+/Users/stephen/Documents
+/Users/stephen/Music
+/Users/stephen/.ssh
+/Users/stephen/work
+/Users/stephen/Pictures
