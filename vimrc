@@ -27,6 +27,7 @@ Bundle 'tpope/vim-surround'
 Bundle 'tpope/vim-fugitive'
 Bundle 'godlygeek/tabular'
 Bundle 'mileszs/ack.vim'
+Bundle 'copypath.vim'
 "Bundle 'gmarik/sudo-gui.vim'
 "Bundle 'milkypostman/vim-togglelist'
 "Bundle 'mutewinter/swap-parameters'
@@ -38,7 +39,7 @@ Bundle 'mileszs/ack.vim'
 "Bundle 'xolox/vim-session'
 "Bundle 'Raimondi/delimitMate'
 "Bundle 'scrooloose/syntastic'
-"Bundle 'ervandew/supertab'
+Bundle 'ervandew/supertab'
 "Bundle 'gregsexton/MatchTag'
 "Bundle 'Shougo/neocomplcache'
 " Snippets
@@ -51,6 +52,8 @@ Bundle 'vim-ruby/vim-ruby'
 Bundle 'tpope/vim-haml'
 Bundle 'tpope/vim-rails'
 Bundle 'tpope/vim-rake'
+" Rpsec
+Bundle 'skalnik/vim-vroom'
 "   JavaScript
 Bundle 'pangloss/vim-javascript'
 Bundle 'kchmck/vim-coffee-script'
@@ -237,6 +240,9 @@ nmap <leader>b :LustyJuggler<cr>
 "set relativenumber
 "set undofile
 
+" Running tests
+nmap <leader>s :VroomRunTestFile<cr>
+nmap <leader>S :VroomRunNearestTest<cr>
 
 "
 "
@@ -256,6 +262,8 @@ autocmd BufNewFile,BufRead * match Error /\(  \+\t\@=\)\|\(^\(\t\+\)\zs \ze[^ *]
 " autocmd BufEnter * NERDTreeMirror
 autocmd VimEnter * wincmd p
 
+"autocmd BufNewFile,BufRead *.json set ft=javascript
+"autocmd BufNewFile,BufRead *.template set ft=javascript
 "nnoremap <up> <nop>
 "nnoremap <down> <nop>
 "nnoremap <left> <nop>

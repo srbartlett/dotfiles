@@ -4,3 +4,5 @@
 /Users/stephen/.ssh
 /Users/stephen/work
 /Users/stephen/Pictures
+/Users/stephen/Dropbox
+/Users/stephen/Desktop

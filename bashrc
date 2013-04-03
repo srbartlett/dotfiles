@@ -104,8 +104,6 @@ save (){
 source ~/.dirs  # Initialization for the above 'save' facility: source the .sdirs file
 shopt -s cdable_vars # set the bash option so that no '$' is required when using the above facility
 
-
-
 # Other aliases ----------------------------------------------------
 alias ll='ls -hl'
 alias la='ls -a'
@@ -121,9 +119,6 @@ alias df='df -h'
 
 # Shows most used commands, cool script I got this from: http://lifehacker.com/software/how-to/turbocharge-your-terminal-274317.php
 alias profileme="history | awk '{print \$2}' | awk 'BEGIN{FS=\"|\"}{print \$1}' | sort | uniq -c | sort -n | tail -n 20 | sort -nr"
-
-alias r="rvm use 1.8.7 && /Users/stephen/work/rea/rea-env/bin/rea-env"
-alias r_up="cd /Users/stephen/work/rea/rea-env; g pull"
 
 # Editors ----------------------------------------------------------
 export EDITOR='mvim'
@@ -141,8 +136,8 @@ if [[ -s "$HOME/.rvm/scripts/rvm" ]]  ; then source "$HOME/.rvm/scripts/rvm" ; f
 
 
 alias b="bundle"
-#alias bi="b install --path vendor"
-alias bi="b install"
+alias bi="b install --path vendor/bundle"
+#alias bi="b install"
 alias bu="b update"
 alias be="b exec"
 alias binit="bi && b package && echo 'vendor/ruby' >> .gitignore"
@@ -170,4 +165,4 @@ alias ec2_pers="source $HOME/.ec2/pers/env"
 #
 #
 #ORACLE
-export DYLD_LIBRARY_PATH=/Users/stephen/work/dius/oracle/instantclient_10_2
+#export DYLD_LIBRARY_PATH=/Users/stephen/work/dius/oracle/instantclient_10_2
