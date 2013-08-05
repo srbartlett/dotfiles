@@ -157,8 +157,8 @@ function g
   fi
 }
 
-alias ec2_work="source $HOME/.ec2/rea/env"
-alias ec2_pers="source $HOME/.ec2/pers/env"
+# Source autoenv to auto load .env files
+source /usr/local/opt/autoenv/activate.sh
 
 # use vi bindings
 # set -o vi
