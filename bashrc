@@ -123,16 +123,14 @@ alias profileme="history | awk '{print \$2}' | awk 'BEGIN{FS=\"|\"}{print \$1}' 
 # Editors ----------------------------------------------------------
 export EDITOR='mvim'
 
-if [[ -s "$HOME/.rvm/scripts/rvm" ]]  ; then source "$HOME/.rvm/scripts/rvm" ; fi
-
-      # Add the following to your ~/.bashrc or ~/.zshrc
-      hitch() {
-        command hitch "$@"
-        if [[ -s "$HOME/.hitch_export_authors" ]] ; then source "$HOME/.hitch_export_authors" ; fi
-      }
-      alias unhitch='hitch -u'
-      # Uncomment to persist pair info between terminal instances
-      # hitch
+# Add the following to your ~/.bashrc or ~/.zshrc
+hitch() {
+  command hitch "$@"
+  if [[ -s "$HOME/.hitch_export_authors" ]] ; then source "$HOME/.hitch_export_authors" ; fi
+}
+alias unhitch='hitch -u'
+# Uncomment to persist pair info between terminal instances
+# hitch
 
 
 alias b="bundle"
@@ -159,6 +157,10 @@ function g
 
 # Source autoenv to auto load .env files
 source /usr/local/opt/autoenv/activate.sh
+
+# tmux related
+alias tmux="tmux -2 $@"
+alias mvim="mvim -v $@"
 
 # use vi bindings
 # set -o vi
