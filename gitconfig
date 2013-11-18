@@ -10,6 +10,9 @@
 	show-branches = !git show-branch origin/master $(git branch | cut -c3-)
 	root = rev-parse --show-toplevel
 	ctags = !.git/hooks/ctags
+        lg = log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr)%Creset' --abbrev-commit --date=relative
+[help]
+          autocorrect = 1
 [color]
 	branch = auto
 	diff = auto

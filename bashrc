@@ -116,6 +116,7 @@ alias top='top -o cpu'
 alias systail='tail -f /var/log/system.log'
 alias m='more'
 alias df='df -h'
+alias dnsflush='sudo killall -HUP mDNSResponder'
 
 # Shows most used commands, cool script I got this from: http://lifehacker.com/software/how-to/turbocharge-your-terminal-274317.php
 alias profileme="history | awk '{print \$2}' | awk 'BEGIN{FS=\"|\"}{print \$1}' | sort | uniq -c | sort -n | tail -n 20 | sort -nr"
@@ -141,9 +142,53 @@ alias be="b exec"
 alias binit="bi && b package && echo 'vendor/ruby' >> .gitignore"
 
 # rails
-alias rc='./script/rails c $@'
-alias rs='./script/rails s $@'
-alias rg='./script/rails g $@'
+alias rc='rails console'
+alias rs='rails server'
+alias rg='rails generate'
+alias fm='be foreman start'
+alias remigrate='rake db:migrate && rake db:migrate:redo && rake db:schema:dump && rake db:test:prepare'
+alias rdm="be rake db:migrate"
+alias devlog='tail -f log/development.log'
+
+# git
+alias gad='git add .'
+alias gc='git commit'
+alias gca='git commit -a'
+alias gcl='git clone'
+alias gcm='git commit -m'
+alias gco='git checkout'
+alias gd='git diff'
+alias gdc='git diff --cached'
+alias gg='git lg'
+alias gpush='git push'
+alias gp='git pull'
+alias gpr='git pull --rebase'
+alias grc='git rebase --continue'
+
+function git-help() {
+  echo "Git Aliases Usage"
+  echo
+  echo "  gad          = git add ."
+  echo "  gc           = git commit"
+  echo "  gca          = git commit -a"
+  echo "  gcl          = git clone"
+  echo "  gcm          = git commit -m"
+  echo "  gco          = git checkout"
+  echo "  gd           = git diff"
+  echo "  gdc          = git diff --cached"
+  echo "  gg           = git lg"
+  echo "  gpush        = git push"
+  echo "  gp           = git pull"
+  echo "  gpr          = git pull --rebase"
+  echo "  gpc          = git rebase --continue"
+}
+
+# postgres
+alias startpostgres='pg_ctl -D /usr/local/var/postgres -l /usr/local/var/postgres/server.log start'
+alias stoppostgres='pg_ctl -D /usr/local/var/postgres -l /usr/local/var/postgres/server.log stop'
+
+# pass-store
+alias p=pass
 
 # alias 'g' to git. If no args supplied, do "git status"
 function g
@@ -160,10 +205,13 @@ source /usr/local/opt/autoenv/activate.sh
 
 # tmux related
 alias tmux="tmux -2 $@"
-alias mvim="mvim -v $@"
+#alias mvim="mvim -v $@"
 
+# add npm to path
+export PATH=$PATH:/usr/local/share/npm/bin/
 # use vi bindings
 # set -o vi
+
 #
 #
 #ORACLE
