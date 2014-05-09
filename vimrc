@@ -68,10 +68,9 @@ Bundle 'itspriddle/vim-jquery'
 "Bundle 'mutewinter/taskpaper.vim'
 "Bundle 'mutewinter/nginx.vim'
 "Bundle 'timcharper/textile.vim'
-Bundle 'ChrisYip/Better-CSS-Syntax-for-Vim'
+"Bundle 'ChrisYip/Better-CSS-Syntax-for-Vim'
 Bundle 'acustodioo/vim-tmux'
 Bundle 'hallison/vim-markdown'
-Bundle 'xhtml.vim--Grny'
 Bundle 'groenewege/vim-less'
 " MatchIt
 "Bundle 'matchit.zip'
@@ -165,7 +164,7 @@ set ignorecase " Case insensitive search
 set smartcase  " Non-case sensitive search
 set incsearch
 set hlsearch
-set wildignore+=*.o,*.obj,*.exe,*.so,*.dll,*.pyc,.svn,.hg,.bzr,.git,.sass-cache,*.class,*.scssc,target/**,vendor/bundle/**,vendor/ruby/**,coverage/**,tmp/**,reports/**,solr/**
+set wildignore+=*.o,*.obj,*.exe,*.so,*.dll,*.pyc,.svn,.hg,.bzr,.git,.sass-cache,*.class,*.scssc,target/**,vendor/bundle/**,vendor/ruby/**,coverage/**,tmp/**,reports/**,solr/**,**/bower_components/*,**/node_modules/*
 
 " ---------------
 " Visual
@@ -236,6 +235,7 @@ nmap Q <nop>
 let g:CommandTMatchWindowAtTop=1 " show window at top
 let g:CommandTMaxFiles=20000
 nmap <leader>t :CommandT<cr>
+nmap <leader>k :CommandTBuffer<cr>
 
 " Lusty Juggler
 nmap <leader>b :LustyJuggler<cr>

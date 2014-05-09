@@ -187,8 +187,18 @@ function git-help() {
 alias startpostgres='pg_ctl -D /usr/local/var/postgres -l /usr/local/var/postgres/server.log start'
 alias stoppostgres='pg_ctl -D /usr/local/var/postgres -l /usr/local/var/postgres/server.log stop'
 
+# mysql
+alias start_mysql='/usr/local/bin/mysqld_safe &'
+alias stop_mysql='/usr/local/bin/mysqladmin shutdown -u root'
+
 # pass-store
 alias p=pass
+
+# vim - use brew vim not os x
+alias vi=vim
+
+# Xcode - open simulator
+alias sim='open /Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/Applications/iPhone\ Simulator.app'
 
 # alias 'g' to git. If no args supplied, do "git status"
 function g
@@ -205,6 +215,7 @@ source /usr/local/opt/autoenv/activate.sh
 
 # tmux related
 alias tmux="tmux -2 $@"
+alias vi="vim"
 #alias mvim="mvim -v $@"
 
 # add npm to path
