@@ -1,33 +1,37 @@
+set nocompatible              " be iMproved, required
+filetype off                  " required
+
 " iTerm colour support
 set t_Co=256
 
-set rtp+=~/.vim/bundle/vundle/
-call vundle#rc()
+set rtp+=~/.vim/bundle/Vundle.vim
+call vundle#begin()
 
-" let Vundle manage Vundle
-" required!
-Bundle 'gmarik/vundle'
+" let Vundle manage Vundle, required
+Plugin 'VundleVim/Vundle.vim'
 
-Bundle 'wincent/Command-T'
-Bundle 'ZoomWin'
-Bundle 'kien/ctrlp.vim'
-Bundle 'LustyJuggler'
+"Plugin 'wincent/Command-T'
+Plugin 'ZoomWin'
+Plugin 'kien/ctrlp.vim'
+Plugin 'LustyJuggler'
 
 " UI Additions
 "Bundle 'mutewinter/vim-indent-guides'
-Bundle 'Lokaltog/vim-powerline'
-Bundle 'scrooloose/nerdtree'
+Plugin 'Lokaltog/vim-powerline'
+Plugin 'scrooloose/nerdtree'
 "Bundle 'Rykka/colorv.vim'
 "Bundle 'nanotech/jellybeans.vim'
 "Bundle 'tomtom/quickfixsigns_vim'
 " Commands
-Bundle 'scrooloose/nerdcommenter'
-Bundle 'tpope/vim-surround'
+Plugin 'scrooloose/nerdcommenter'
+Plugin 'tpope/vim-surround'
+"Plugin 'unimpaired.vim'
+Plugin 'https://github.com/tpope/vim-unimpaired.git'
 "Bundle 'tpope/vim-speeddating'
-Bundle 'tpope/vim-fugitive'
-Bundle 'godlygeek/tabular'
-Bundle 'mileszs/ack.vim'
-Bundle 'copypath.vim'
+Plugin 'tpope/vim-fugitive'
+Plugin 'godlygeek/tabular'
+Plugin 'mileszs/ack.vim'
+Plugin 'copypath.vim'
 "Bundle 'gmarik/sudo-gui.vim'
 "Bundle 'milkypostman/vim-togglelist'
 "Bundle 'mutewinter/swap-parameters'
@@ -38,8 +42,7 @@ Bundle 'copypath.vim'
 "Bundle 'IndexedSearch'
 "Bundle 'xolox/vim-session'
 "Bundle 'Raimondi/delimitMate'
-"Bundle 'scrooloose/syntastic'
-Bundle 'ervandew/supertab'
+Plugin 'ervandew/supertab'
 "Bundle 'gregsexton/MatchTag'
 "Bundle 'Shougo/neocomplcache'
 " Snippets
@@ -48,17 +51,16 @@ Bundle 'ervandew/supertab'
 "Bundle 'MarcWeber/vim-addon-mw-utils'
 " Language Additions
 "   Ruby
-Bundle 'vim-ruby/vim-ruby'
-Bundle 'tpope/vim-haml'
-Bundle 'tpope/vim-rails'
-Bundle 'tpope/vim-rake'
+Plugin 'vim-ruby/vim-ruby'
+Plugin 'tpope/vim-haml'
+Plugin 'tpope/vim-rails'
+Plugin 'tpope/vim-rake'
 " Rpsec
-Bundle 'skalnik/vim-vroom'
+Plugin 'skalnik/vim-vroom'
 "   JavaScript
-Bundle 'pangloss/vim-javascript'
-Bundle 'kchmck/vim-coffee-script'
-Bundle 'leshill/vim-json'
-Bundle 'itspriddle/vim-jquery'
+Plugin 'pangloss/vim-javascript'
+Plugin 'kchmck/vim-coffee-script'
+"Plugin 'itspriddle/vim-jquery'
 "Bundle 'nono/vim-handlebars'
 "   TomDoc
 "Bundle 'mutewinter/tomdoc.vim'
@@ -69,20 +71,35 @@ Bundle 'itspriddle/vim-jquery'
 "Bundle 'mutewinter/nginx.vim'
 "Bundle 'timcharper/textile.vim'
 "Bundle 'ChrisYip/Better-CSS-Syntax-for-Vim'
-Bundle 'acustodioo/vim-tmux'
-Bundle 'hallison/vim-markdown'
-Bundle 'groenewege/vim-less'
+"Plugin 'acustodioo/vim-tmux'
+Plugin 'hallison/vim-markdown'
+Plugin 'groenewege/vim-less'
 " MatchIt
-"Bundle 'matchit.zip'
+Bundle 'matchit.zip'
 "Bundle 'kana/vim-textobj-user'
 "Bundle 'nelstrom/vim-textobj-rubyblock'
 " Libraries
 "Bundle 'L9'
 "Bundle 'tpope/vim-repeat'
 "Bundle 'tomtom/tlib_vim'
-Bundle 'mathml.vim'
+Plugin 'mathml.vim'
 "Bundle 'gpg.vim'
-Bundle 'jpalardy/vim-slime'
+Plugin 'jpalardy/vim-slime'
+Plugin 'scrooloose/syntastic'
+Plugin '907th/vim-auto-save'
+Plugin 'editorconfig/editorconfig-vim'
+
+Plugin 'elzr/vim-json'
+
+" Used for typescript & angular
+Plugin 'https://github.com/leafgarland/typescript-vim'
+Plugin 'Quramy/tsuquyomi'
+Plugin 'https://github.com/bdauria/angular-cli.vim'
+
+
+" All of your Plugins must be added before the following line
+call vundle#end()            " required
+filetype plugin indent on    " required
 
 syntax on
 set number
@@ -109,9 +126,10 @@ set nowrap         " Line wrapping off
 set laststatus=2   " Always show the statusline
 set cmdheight=2    " Make the command area two lines high
 set encoding=utf-8
-if exists('+colorcolumn')
-  set colorcolumn=80 " Color the 80th column differently
-endif
+"
+"if exists('+colorcolumn')
+  "set colorcolumn=80 " Color the 80th column differently
+"endif
 " Disable tooltips for hovering keywords in Vim
 if exists('+ballooneval')
   " This doesn't seem to stop tooltips for Ruby files
@@ -164,7 +182,9 @@ set ignorecase " Case insensitive search
 set smartcase  " Non-case sensitive search
 set incsearch
 set hlsearch
-set wildignore+=*.o,*.obj,*.exe,*.so,*.dll,*.pyc,.svn,.hg,.bzr,.git,.sass-cache,*.class,*.scssc,target/**,vendor/bundle/**,vendor/ruby/**,coverage/**,tmp/**,reports/**,solr/**,**/bower_components/*,**/node_modules/*
+set wildignore+=*.o,*.obj,*.exe,*.so,*.dll,*.pyc,.svn,.hg,.bzr,.git,.sass-cache,*.class,dist/**,*.scssc,target/**,vendor/bundle/**,vendor/ruby/**,coverage/**,tmp/**,reports/**,solr/**,**/bower_components/*,**/node_modules/*
+
+let g:ctrlp_custom_ignore = './dist/*'
 
 " ---------------
 " Visual
@@ -232,15 +252,15 @@ nmap Q <nop>
 "set showmode!
 
 " Command-T
-let g:CommandTMatchWindowAtTop=1 " show window at top
-let g:CommandTMaxFiles=20000
-nmap <leader>t :CommandT<cr>
-nmap <leader>k :CommandTBuffer<cr>
+"let g:CommandTMatchWindowAtTop=1 " show window at top
+"let g:CommandTMaxFiles=20000
+"nmap <leader>t :CommandT<cr>
+"nmap <leader>k :CommandTBuffer<cr>
 
 " Lusty Juggler
 nmap <leader>b :LustyJuggler<cr>
 
-"set relativenumber
+"setder relativenumber
 "set undofile
 
 " Running tests
@@ -368,7 +388,6 @@ vmap <leader>bd "td?describe<CR>obefore do<CR>end<CR><ESC>kk"tp
 set guifont=Menlo\ for\ Powerline:h12
 
 imap jj <Esc>
-
 " Auto resize the active window
 "function! AutoResize()
 "  let w = &columns*55/100
@@ -396,9 +415,67 @@ imap jj <Esc>
 
 command GdiffInTab tabedit %|Gdiff
 
+command Pry :normal i require 'pry'; binding.pry<ESC>
+
+
 " vim-slim
 let g:slime_target = "tmux"
 
 
-let g:JavaImpPaths = "/Users/stephen/work/dius/oua-workflow/src/main/java"
-let g:JavaImpDataDir = "/Users/stephen/tmp"
+" slackcat
+" serge special
+
+if !exists("g:slackcat")
+
+  " let g:slackcat = "slackcat"
+endif
+
+function! s:get_visual_selection()
+  let [lnum1, col1] = getpos("'<")[1:2]
+  let [lnum2, col2] = getpos("'>")[1:2]
+  let lines = getline(lnum1, lnum2)
+  let lines[-1] = lines[-1][: col2 - (&selection == 'inclusive' ? 1 : 2)]
+  let lines[0] = lines[0][col1 - 1:]
+  return join(lines, "\n")
+endfunction
+
+function! SendToSlackcat() range
+  let filename = shellescape(bufname("%"))
+  let content = shellescape(escape(s:get_visual_selection(), "%#!"))
+  execute "silent: !echo " . content . "|" . g:slackcat . " --filetype=" . &filetype . " --filename=" . filename . " --initial-comment " . filename . ' &'
+  execute ":redraw!"
+  echohl String
+  echo "Sent selection from " . filename . " to slack "
+  echohl None
+endfunction
+map <leader>ss :call SendToSlackcat()<cr>
+
+"
+nnoremap <C-w> :CtrlPBuffer<cr>
+let g:ctrlp_regexp = 1
+
+" syntastic code style
+"let g:syntastic_javascript_checkers = ['standard']
+"let g:syntastic_always_populate_loc_list = 0
+"let g:syntastic_auto_loc_list = 1
+"let g:syntastic_check_on_open = 0
+"let g:syntastic_check_on_wq = 0
+"let g:syntastic_enable_signs=1
+"let g:syntastic_html_checkers=['']
+
+let g:tsuquyomi_disable_quickfix = 1
+let g:syntastic_typescript_checkers = ['tsuquyomi']
+let g:syntastic_always_populate_loc_list = 1
+let g:syntastic_check_on_open = 1
+
+
+"autocmd bufwritepost *.js silent !standard % --format
+"set autoread
+
+let g:auto_save = 0
+let g:auto_save_in_insert_mode = 0
+
+
+"angular-cli.vim
+autocmd FileType typescript,html call angular_cli#init()
+"autocmd VimEnter * if globpath('.,..','node_modules/@angular') != '' | call angular_cli#init() | endif

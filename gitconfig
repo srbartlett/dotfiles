@@ -42,3 +42,5 @@
 	templatedir = ~/.git_template
 [http]
 	sslVerify = false
+[credential]
+	helper = osxkeychain

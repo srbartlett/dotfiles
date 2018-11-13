@@ -8,10 +8,11 @@ export R_HOME=/Library/Frameworks/R.framework/Resources
 
 
 # Path ------------------------------------------------------------
-export PATH=/usr/local/bin:/usr/local/sbin:$PATH
+PYTHON_BASE_PATH=$(python -m site --user-base)
+export PATH=/usr/local/bin:/usr/local/sbin:$PATH:$PYTHON_BASE_PATH/bin
 
-if [ -d ~/bin ]; then
-	export PATH=:~/bin:$PATH  # add your bin folder to the path, if you have it.  It's a good place to add all your scripts
+if [ -d ~/.bin ]; then
+	export PATH=:~/.bin:$PATH  # add your bin folder to the path, if you have it.  It's a good place to add all your scripts
 fi
 
 # Colors ----------------------------------------------------------
@@ -61,7 +62,6 @@ bind "set show-all-if-ambiguous On" # show list automatically, without double ta
 if [ -f /etc/bash_completion ]; then
     . /etc/bash_completion
 fi
-
 
 # Prompts ----------------------------------------------------------
 if [ -f /usr/local/bin/git-completion.bash ]; then source /usr/local/bin/git-completion.bash; fi # for Git completion
@@ -121,6 +121,10 @@ alias dnsflush='sudo killall -HUP mDNSResponder'
 # Shows most used commands, cool script I got this from: http://lifehacker.com/software/how-to/turbocharge-your-terminal-274317.php
 alias profileme="history | awk '{print \$2}' | awk 'BEGIN{FS=\"|\"}{print \$1}' | sort | uniq -c | sort -n | tail -n 20 | sort -nr"
 
+
+# openports
+alias openports="lsof -i -P | grep -i \"listen\""
+
 # Editors ----------------------------------------------------------
 export EDITOR='mvim'
 
@@ -141,6 +145,9 @@ alias bu="b update"
 alias be="b exec"
 alias binit="bi && b package && echo 'vendor/ruby' >> .gitignore"
 
+#node & npm
+alias n='npm'
+
 # rails
 alias rc='rails console'
 alias rs='rails server'
@@ -151,7 +158,7 @@ alias rdm="be rake db:migrate"
 alias devlog='tail -f log/development.log'
 
 # git
-alias gad='git add .'
+alias gad='git add -u .'
 alias gc='git commit'
 alias gca='git commit -a'
 alias gcl='git clone'
@@ -164,6 +171,7 @@ alias gpush='git push'
 alias gp='git pull'
 alias gpr='git pull --rebase'
 alias grc='git rebase --continue'
+alias gpo='git push origin '
 
 function git-help() {
   echo "Git Aliases Usage"
@@ -181,6 +189,7 @@ function git-help() {
   echo "  gp           = git pull"
   echo "  gpr          = git pull --rebase"
   echo "  gpc          = git rebase --continue"
+  echo "  gpo          = git push origin "
 }
 
 # postgres
@@ -210,8 +219,20 @@ function g
   fi
 }
 
+# Meteor
+alias m=meteor
+
+# Gradle
+alias gw=./gradlew
+alias gwb='gw build'
+
+
 # Source autoenv to auto load .env files
 source /usr/local/opt/autoenv/activate.sh
+
+#chruby
+source /usr/local/share/chruby/chruby.sh
+source /usr/local/share/chruby/auto.sh
 
 # tmux related
 alias tmux="tmux -2 $@"
@@ -223,7 +244,26 @@ export PATH=$PATH:/usr/local/share/npm/bin/
 # use vi bindings
 # set -o vi
 
-#
-#
-#ORACLE
-#export DYLD_LIBRARY_PATH=/Users/stephen/work/dius/oracle/instantclient_10_2
+### Added by the Heroku Toolbelt
+export PATH="/usr/local/heroku/bin:$PATH"
+
+# Load Aliases
+FUNCTIONS="$HOME/dev/dotfiles/aliases/*.bash"
+for config_file in $FUNCTIONS
+do
+  source $config_file
+done
+
+source /usr/local/etc/bash_completion.d/password-store
+
+# imagemagik
+MAGICK_HOME=~/dev/ImageMagick-6.8.9
+export PATH=$PATH:$MAGICK_HOME/bin
+export DYLD_LIBRARY_PATH="$MAGICK_HOME/lib/"
+export PATH="/Users/stephen/bin/Sencha/Cmd/6.1.3.42/..:$PATH"
+
+export NVM_DIR="/Users/stephen/.nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh"  # This loads nvm
+
+alias serve="python ~/.bin/serve.py 8080"
+
