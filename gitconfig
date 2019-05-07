@@ -36,11 +36,12 @@
 	email = stephenb@rtlett.org
 [core]
 	edit = vi
-	editor = /usr/bin/vim
+	editor = vim
 
 [init]
 	templatedir = ~/.git_template
 [http]
 	sslVerify = false
+[credential]
 [credential]
 	helper = osxkeychain

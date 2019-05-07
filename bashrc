@@ -11,6 +11,9 @@ export R_HOME=/Library/Frameworks/R.framework/Resources
 PYTHON_BASE_PATH=$(python -m site --user-base)
 export PATH=/usr/local/bin:/usr/local/sbin:$PATH:$PYTHON_BASE_PATH/bin
 
+# IRESS OKTA
+export PATH=~/work/iress/okta-aws-cli-assume-role/bin:$PATH
+
 if [ -d ~/.bin ]; then
 	export PATH=:~/.bin:$PATH  # add your bin folder to the path, if you have it.  It's a good place to add all your scripts
 fi
@@ -172,6 +175,7 @@ alias gp='git pull'
 alias gpr='git pull --rebase'
 alias grc='git rebase --continue'
 alias gpo='git push origin '
+alias gtb='git branch -u '
 
 function git-help() {
   echo "Git Aliases Usage"
@@ -190,6 +194,7 @@ function git-help() {
   echo "  gpr          = git pull --rebase"
   echo "  gpc          = git rebase --continue"
   echo "  gpo          = git push origin "
+  echo "  gtb          = git branch -u [origin/XXXX]"
 }
 
 # postgres
@@ -218,6 +223,8 @@ function g
     git "$@"
   fi
 }
+
+alias a=amplify
 
 # Meteor
 alias m=meteor
@@ -267,3 +274,6 @@ export NVM_DIR="/Users/stephen/.nvm"
 
 alias serve="python ~/.bin/serve.py 8080"
 
+eval "$(direnv hook bash)"
+
+[ -f ~/.fzf.bash ] && source ~/.fzf.bash

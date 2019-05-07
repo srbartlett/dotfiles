@@ -96,6 +96,10 @@ Plugin 'https://github.com/leafgarland/typescript-vim'
 Plugin 'Quramy/tsuquyomi'
 Plugin 'https://github.com/bdauria/angular-cli.vim'
 
+Plugin 'https://github.com/hashivim/vim-terraform'
+
+Plugin 'vim-scripts/indentpython.vim'
+
 
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
@@ -475,6 +479,8 @@ let g:syntastic_check_on_open = 1
 let g:auto_save = 0
 let g:auto_save_in_insert_mode = 0
 
+" Excluded patterns for EditorConfig
+let g:EditorConfig_exclude_patterns = ['fugitive://.*']
 
 "angular-cli.vim
 autocmd FileType typescript,html call angular_cli#init()
