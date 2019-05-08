@@ -1,0 +1,14 @@
+--ignore-dir=vendor
+--ignore-dir=log
+--ignore-dir=tmp
+--ignore-dir=doc
+--ignore-dir=dist
+--ignore-dir=node_modules
+--smart-case
+--sort-files
+--follow
+--color
+--color-match=on_black
+--group
+--type-set=coffee=.coffee
+--type-set=json=.json

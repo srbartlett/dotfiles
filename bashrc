@@ -1,12 +1,6 @@
 # See following for more information: http://www.infinitered.com/blog/?p=19
 
 
-# Ruby
-export RUBYOPT=rubygems
-
-export R_HOME=/Library/Frameworks/R.framework/Resources
-
-
 # Path ------------------------------------------------------------
 PYTHON_BASE_PATH=$(python -m site --user-base)
 export PATH=/usr/local/bin:/usr/local/sbin:$PATH:$PYTHON_BASE_PATH/bin
@@ -61,10 +55,7 @@ bind "set completion-ignore-case on" # note: bind used instead of sticking these
 bind "set bell-style none" # no bell
 bind "set show-all-if-ambiguous On" # show list automatically, without double tab
 
-# Turn on advanced bash completion if the file exists (get it here: http://www.caliban.org/bash/index.shtml#completion)
-if [ -f /etc/bash_completion ]; then
-    . /etc/bash_completion
-fi
+[ -f /usr/local/etc/bash_completion ] && . /usr/local/etc/bash_completion
 
 # Prompts ----------------------------------------------------------
 if [ -f /usr/local/bin/git-completion.bash ]; then source /usr/local/bin/git-completion.bash; fi # for Git completion
@@ -76,7 +67,7 @@ export PS1="\[\033[01;32m\]\w\[\033[00;33m\]\$(__git_ps1 \" (%s)\") \[\033[01;36
 # weird wrapping errors occur on some systems, so this method is superior
 export PROMPT_COMMAND='echo -ne "\033]0;${USER}@${HOSTNAME%%.*} ${PWD}"; echo -ne "\007"'  # user@host path
 
-export PS2='> '    # Secondary prompt
+#export PS2='> '    # Secondary prompt
 export PS3='#? '   # Prompt 3
 export PS4='+'     # Prompt 4
 
@@ -226,20 +217,15 @@ function g
 
 alias a=amplify
 
-# Meteor
-alias m=meteor
-
 # Gradle
 alias gw=./gradlew
 alias gwb='gw build'
 
-
 # Source autoenv to auto load .env files
 source /usr/local/opt/autoenv/activate.sh
 
-#chruby
-source /usr/local/share/chruby/chruby.sh
-source /usr/local/share/chruby/auto.sh
+# ruby
+eval "$(rbenv init -)"
 
 # tmux related
 alias tmux="tmux -2 $@"
@@ -264,13 +250,13 @@ done
 source /usr/local/etc/bash_completion.d/password-store
 
 # imagemagik
-MAGICK_HOME=~/dev/ImageMagick-6.8.9
-export PATH=$PATH:$MAGICK_HOME/bin
-export DYLD_LIBRARY_PATH="$MAGICK_HOME/lib/"
-export PATH="/Users/stephen/bin/Sencha/Cmd/6.1.3.42/..:$PATH"
+#MAGICK_HOME=~/dev/ImageMagick-6.8.9
+#export PATH=$PATH:$MAGICK_HOME/bin
+#export DYLD_LIBRARY_PATH="$MAGICK_HOME/lib/"
+#export PATH="/Users/stephen/bin/Sencha/Cmd/6.1.3.42/..:$PATH"
 
-export NVM_DIR="/Users/stephen/.nvm"
-[ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh"  # This loads nvm
+export NVM_DIR="$HOME/.nvm"
+. "/usr/local/opt/nvm/nvm.sh"
 
 alias serve="python ~/.bin/serve.py 8080"
 

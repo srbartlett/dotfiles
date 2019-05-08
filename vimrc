@@ -13,8 +13,7 @@ Plugin 'VundleVim/Vundle.vim'
 "Plugin 'wincent/Command-T'
 Plugin 'ZoomWin'
 Plugin 'kien/ctrlp.vim'
-Plugin 'LustyJuggler'
-
+Plugin 'https://github.com/sjbach/lusty'
 " UI Additions
 "Bundle 'mutewinter/vim-indent-guides'
 Plugin 'Lokaltog/vim-powerline'
@@ -416,45 +415,13 @@ imap jj <Esc>
 "autocmd InsertEnter * :set number
 "autocmd InsertLeave * :set relativenumber
 "
-
 command GdiffInTab tabedit %|Gdiff
 
 command Pry :normal i require 'pry'; binding.pry<ESC>
 
-
 " vim-slim
 let g:slime_target = "tmux"
 
-
-" slackcat
-" serge special
-
-if !exists("g:slackcat")
-
-  " let g:slackcat = "slackcat"
-endif
-
-function! s:get_visual_selection()
-  let [lnum1, col1] = getpos("'<")[1:2]
-  let [lnum2, col2] = getpos("'>")[1:2]
-  let lines = getline(lnum1, lnum2)
-  let lines[-1] = lines[-1][: col2 - (&selection == 'inclusive' ? 1 : 2)]
-  let lines[0] = lines[0][col1 - 1:]
-  return join(lines, "\n")
-endfunction
-
-function! SendToSlackcat() range
-  let filename = shellescape(bufname("%"))
-  let content = shellescape(escape(s:get_visual_selection(), "%#!"))
-  execute "silent: !echo " . content . "|" . g:slackcat . " --filetype=" . &filetype . " --filename=" . filename . " --initial-comment " . filename . ' &'
-  execute ":redraw!"
-  echohl String
-  echo "Sent selection from " . filename . " to slack "
-  echohl None
-endfunction
-map <leader>ss :call SendToSlackcat()<cr>
-
-"
 nnoremap <C-w> :CtrlPBuffer<cr>
 let g:ctrlp_regexp = 1
 
