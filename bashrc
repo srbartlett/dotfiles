@@ -5,8 +5,8 @@
 PYTHON_BASE_PATH=$(python -m site --user-base)
 export PATH=/usr/local/bin:/usr/local/sbin:$PATH:$PYTHON_BASE_PATH/bin
 
-# IRESS OKTA
-export PATH=~/work/iress/okta-aws-cli-assume-role/bin:$PATH
+# Python for AWS
+export PATH=$PATH:/usr/local/Cellar/python@2/2.7.16/bin/python
 
 if [ -d ~/.bin ]; then
 	export PATH=:~/.bin:$PATH  # add your bin folder to the path, if you have it.  It's a good place to add all your scripts
@@ -76,7 +76,8 @@ function xtitle {  # change the title of your xterm* window
   echo -ne "\033]0;$1\007"
 }
 
-
+# Ruby
+eval "$(rbenv init -)"
 
 # Navigation -------------------------------------------------------
 alias ..='cd ..'

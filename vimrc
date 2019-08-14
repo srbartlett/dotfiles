@@ -84,7 +84,8 @@ Bundle 'matchit.zip'
 Plugin 'mathml.vim'
 "Bundle 'gpg.vim'
 Plugin 'jpalardy/vim-slime'
-Plugin 'scrooloose/syntastic'
+"Plugin 'vim-syntastic/syntastic'
+
 Plugin '907th/vim-auto-save'
 Plugin 'editorconfig/editorconfig-vim'
 
@@ -92,13 +93,21 @@ Plugin 'elzr/vim-json'
 
 " Used for typescript & angular
 Plugin 'https://github.com/leafgarland/typescript-vim'
-Plugin 'Quramy/tsuquyomi'
+"Plugin 'Quramy/tsuquyomi'
 Plugin 'https://github.com/bdauria/angular-cli.vim'
 
-Plugin 'https://github.com/hashivim/vim-terraform'
+"Plugin 'https://github.com/hashivim/vim-terraform'
 
 Plugin 'vim-scripts/indentpython.vim'
 
+" Linter
+Plugin 'dense-analysis/ale'
+
+" Interactive typepad
+"Plugin 'metakirby5/codi.vim'
+
+" Svelte JS
+Plugin 'burner/vim-svelte'
 
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
@@ -384,8 +393,6 @@ highlight StatusLine ctermfg=blue ctermbg=yellow
 " Copy path - handy for pasting the filename in the terminal for running rspec
 nmap <leader>cp :CopyPath<cr>
 
-vmap <leader>bd "td?describe<CR>obefore do<CR>end<CR><ESC>kk"tp
-
 " Custom Menlo font for Powerline
 " From: https://github.com/Lokaltog/vim-powerline/wiki/Patched-fonts
 set guifont=Menlo\ for\ Powerline:h12
@@ -419,13 +426,10 @@ command GdiffInTab tabedit %|Gdiff
 
 command Pry :normal i require 'pry'; binding.pry<ESC>
 
-" vim-slim
-let g:slime_target = "tmux"
-
 nnoremap <C-w> :CtrlPBuffer<cr>
 let g:ctrlp_regexp = 1
 
-" syntastic code style
+" syntastic code style - replaced with vim.ale
 "let g:syntastic_javascript_checkers = ['standard']
 "let g:syntastic_always_populate_loc_list = 0
 "let g:syntastic_auto_loc_list = 1
@@ -433,12 +437,33 @@ let g:ctrlp_regexp = 1
 "let g:syntastic_check_on_wq = 0
 "let g:syntastic_enable_signs=1
 "let g:syntastic_html_checkers=['']
+"let g:tsuquyomi_disable_quickfix = 1
+"let g:syntastic_typescript_checkers = ['tslint', 'tsc']
+"let g:syntastic_always_populate_loc_list = 1
+"let g:syntastic_check_on_open = 1
 
-let g:tsuquyomi_disable_quickfix = 1
-let g:syntastic_typescript_checkers = ['tsuquyomi']
-let g:syntastic_always_populate_loc_list = 1
-let g:syntastic_check_on_open = 1
 
+
+"
+" ALE linter and fixer
+let g:ale_lint_on_save = 1 " is default just to make it explicit
+let g:ale_lint_on_text_changed = 'never' " seems slow editor down when typing
+let g:ale_ruby_rubocop_executable = 'bundle'
+let g:ale_cache_executable_check_failures = 0 " cache checks
+let g:ale_completion_enabled = 0
+" let g:ale_dart_dartfmt_options = '-l 120'
+let g:ale_linters = {
+    \ 'typescript': ['tslint'],
+    \ }
+" let g:ale_dart_dartfmt_options = '-l 120'
+let g:ale_fix_on_save = 1
+let g:ale_fixers = {
+    \ 'go': ['gofmt'],
+    \ 'javascript': ['eslint', 'prettier'],
+    \ 'ruby': ['rubocop'],
+    \ 'css': ['prettier'],
+    \ 'typescript': ['tslint']
+    \ }
 
 "autocmd bufwritepost *.js silent !standard % --format
 "set autoread
