@@ -258,6 +258,7 @@ source /usr/local/etc/bash_completion.d/password-store
 
 export NVM_DIR="$HOME/.nvm"
 . "/usr/local/opt/nvm/nvm.sh"
+. ~/.nvm/nvm.sh
 
 alias serve="python ~/.bin/serve.py 8080"
 

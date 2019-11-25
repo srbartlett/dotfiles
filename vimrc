@@ -59,6 +59,7 @@ Plugin 'skalnik/vim-vroom'
 "   JavaScript
 Plugin 'pangloss/vim-javascript'
 Plugin 'kchmck/vim-coffee-script'
+Plugin 'maxmellon/vim-jsx-pretty'
 "Plugin 'itspriddle/vim-jquery'
 "Bundle 'nono/vim-handlebars'
 "   TomDoc
