@@ -109,6 +109,11 @@ Plugin 'dense-analysis/ale'
 
 " Svelte JS
 Plugin 'burner/vim-svelte'
+"
+" Insert or delete brackets, etc.
+"Plugin 'jiangmiao/auto-pairs'
+
+Plugin 'ekalinin/Dockerfile.vim'
 
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
