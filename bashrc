@@ -265,3 +265,10 @@ alias serve="python ~/.bin/serve.py 8080"
 eval "$(direnv hook bash)"
 
 [ -f ~/.fzf.bash ] && source ~/.fzf.bash
+
+# tabtab source for serverless package
+# uninstall by removing these lines or running `tabtab uninstall serverless`
+[ -f /Users/stephen/work/xcellerator/mstd-serverless/node_modules/tabtab/.completions/serverless.bash ] && . /Users/stephen/work/xcellerator/mstd-serverless/node_modules/tabtab/.completions/serverless.bash
+# tabtab source for sls package
+# uninstall by removing these lines or running `tabtab uninstall sls`
+[ -f /Users/stephen/work/xcellerator/mstd-serverless/node_modules/tabtab/.completions/sls.bash ] && . /Users/stephen/work/xcellerator/mstd-serverless/node_modules/tabtab/.completions/sls.bash
