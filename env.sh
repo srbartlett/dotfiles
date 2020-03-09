@@ -5,10 +5,19 @@ alias ohmyzsh="vim ~/.oh-my-zsh"
 
 alias fm='foreman start'
 
-alias g='git status'
 alias gad='git add -u'
 
 export EDITOR=vim
+
+unalias g
+function g()
+{
+  if [ "$#" = '0' ]; then
+    git status
+   else
+    git "$@"
+  fi
+}
 
 function f() { find . -iname "*$1*" ${@:2} }
 

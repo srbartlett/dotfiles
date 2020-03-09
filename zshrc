@@ -71,7 +71,6 @@ ZSH_THEME="agnoster"
 plugins=(
   bundler
   git
-  dotenv
   osx
   rake
   zsh-nvm
@@ -83,6 +82,7 @@ plugins=(
   heroku
   ruby
   fzf
+  dash
 )
 
 #plugins=(git colored-man colorize pip python brew osx zsh-syntax-highlighting zsh-autosuggestions)
