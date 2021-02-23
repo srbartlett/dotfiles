@@ -300,6 +300,8 @@ autocmd BufNewFile,BufRead * match Error /\(  \+\t\@=\)\|\(^\(\t\+\)\zs \ze[^ *]
 " autocmd VimEnter * NERDTree
 " autocmd BufEnter * NERDTreeMirror
 autocmd VimEnter * wincmd p
+" show dot files in nerdtree
+let NERDTreeShowHidden=1
 
 "autocmd BufNewFile,BufRead *.json set ft=javascript
 "autocmd BufNewFile,BufRead *.template set ft=javascript
