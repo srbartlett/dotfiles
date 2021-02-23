@@ -27,3 +27,14 @@ function options() {
         echo "\n\nPlugin: $plugin"; grep -r "^function \w*" $PLUGIN_PATH$plugin | awk '{print $2}' | sed 's/()//'| tr '\n' ', '; grep -r "^alias" $PLUGIN_PATH$plugin | awk '{print $2}' | sed 's/=.*//' |  tr '\n' ', '
     done
 }
+eval "$(rbenv init -)"
+
+
+export JAVA_8_HOME=$(/usr/libexec/java_home -v1.8)
+export JAVA_11_HOME=$(/usr/libexec/java_home -v11)
+alias java8='export JAVA_HOME=$JAVA_8_HOME'
+alias java11='export JAVA_HOME=$JAVA_11_HOME'
+
+eval "$(direnv hook zsh)"
+
+alias ap-run-core='BYPASS_CHECKS=true  ./gradlew --parallel --max-workers=10 :admin-api:run :api:run :portal-api:run :merchant-portal-api:run :pos-api:run :loadtesting:stubs:run'
