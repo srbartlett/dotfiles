@@ -7,4 +7,4 @@ for f in dotfiles/\.[^.]*; do
   ln -sf "$PWD/dotfiles/$FILE" "$HOME"
 done
 
-ln -sf "$PWD/git_template" "$HOME/.git_template"
+ln -sf "$PWD/git_template" "$HOME"
