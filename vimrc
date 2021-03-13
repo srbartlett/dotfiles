@@ -108,12 +108,15 @@ Plugin 'dense-analysis/ale'
 "Plugin 'metakirby5/codi.vim'
 
 " Svelte JS
-Plugin 'burner/vim-svelte'
+"Plugin 'burner/vim-svelte'
 "
 " Insert or delete brackets, etc.
 "Plugin 'jiangmiao/auto-pairs'
 
 Plugin 'ekalinin/Dockerfile.vim'
+
+" git
+Plugin 'jreybert/vimagit'
 
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
@@ -302,6 +305,9 @@ autocmd BufNewFile,BufRead * match Error /\(  \+\t\@=\)\|\(^\(\t\+\)\zs \ze[^ *]
 " autocmd VimEnter * NERDTree
 " autocmd BufEnter * NERDTreeMirror
 autocmd VimEnter * wincmd p
+
+" show hidden files in NerdTree
+let NERDTreeShowHidden=1
 
 "autocmd BufNewFile,BufRead *.json set ft=javascript
 "autocmd BufNewFile,BufRead *.template set ft=javascript
