@@ -1,0 +1,29 @@
+[alias]
+	st = status
+
+[help]
+          autocorrect = 1
+[color]
+	branch = auto
+	diff = auto
+	interactive = auto
+	status = auto
+	showbranch = auto
+	sh = auto
+[color "branch"]
+	current = green
+	remote = cyan
+[push]
+	default = current
+[color "status"]
+	added = green
+	changed = red
+	untracked = cyan
+[user]
+	name = Stephen Bartlett
+	email = stephenb@rtlett.org
+[core]
+	edit = vi
+	editor = vim
+[credential]
+	helper = osxkeychain
