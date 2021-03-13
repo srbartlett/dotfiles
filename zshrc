@@ -1,8 +1,10 @@
 # If you come from bash you might have to change your $PATH.
 # export PATH=$HOME/bin:/usr/local/bin:$PATH
 
+export ZSH_DISABLE_COMPFIX=true
+
 # Path to your oh-my-zsh installation.
-export ZSH="/Users/stephen/.oh-my-zsh"
+export ZSH="$HOME/.oh-my-zsh"
 
 # Set name of the theme to load --- if set to "random", it will
 # load a random theme each time oh-my-zsh is loaded, in which case,
@@ -71,9 +73,7 @@ ZSH_THEME="agnoster"
 plugins=(
   bundler
   git
-  dotenv
   osx
-  rake
   zsh-nvm
   node
   nvm
@@ -83,6 +83,7 @@ plugins=(
   heroku
   ruby
   fzf
+  dash
 )
 
 #plugins=(git colored-man colorize pip python brew osx zsh-syntax-highlighting zsh-autosuggestions)
@@ -116,14 +117,4 @@ DEFAULT_USER=`whoami`
 # For a full list of active aliases, run `alias`.
 #
 # Example aliases
-alias zshconfig="vim ~/.zshrc"
-alias ohmyzsh="vim ~/.oh-my-zsh"
-
-alias fm='foreman start'
-
-function options() {
-    PLUGIN_PATH="$HOME/.oh-my-zsh/plugins/"
-    for plugin in $plugins; do
-        echo "\n\nPlugin: $plugin"; grep -r "^function \w*" $PLUGIN_PATH$plugin | awk '{print $2}' | sed 's/()//'| tr '\n' ', '; grep -r "^alias" $PLUGIN_PATH$plugin | awk '{print $2}' | sed 's/=.*//' |  tr '\n' ', '
-    done
-}
+source ~/.env.sh
