@@ -466,13 +466,16 @@ let g:ale_completion_enabled = 0
 " let g:ale_dart_dartfmt_options = '-l 120'
 let g:ale_linters = {
     \ 'typescript': ['tslint'],
+    \   'ruby': ['standardrb', 'rubocop'],
+    \   'python': ['flake8', 'pylint'],
+    \   'javascript': ['eslint'],
     \ }
 " let g:ale_dart_dartfmt_options = '-l 120'
 let g:ale_fix_on_save = 1
 let g:ale_fixers = {
     \ 'go': ['gofmt'],
     \ 'javascript': ['eslint', 'prettier'],
-    \ 'ruby': ['rubocop'],
+    \ 'ruby': ['standardrb'],
     \ 'css': ['prettier'],
     \ 'typescript': ['tslint']
     \ }
