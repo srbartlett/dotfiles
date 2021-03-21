@@ -105,6 +105,9 @@ function backup() {
 
 }
 
+#postgres
+export PATH="$PATH:/usr/local/opt/postgresql@9.6/bin"
+
 # heroku
 alias h='heroku'
 alias hl='heroku list'
