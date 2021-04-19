@@ -18,3 +18,13 @@ Colour Scheme
 
     mkdir ~/.vim/colors
     (cd ~/.vim/colors && curl -O https://raw.githubusercontent.com/tomasr/molokai/master/colors/molokai.vim)
+
+
+## GPG Tools
+
+    https://gpgtools.org/
+    Import secret key
+
+## Pass
+
+    ln -s ~/dev/password-store ~/.password-store

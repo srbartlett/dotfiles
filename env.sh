@@ -36,15 +36,14 @@ function options() {
 eval "$(rbenv init -)"
 
 
-export JAVA_11_HOME=$(/usr/libexec/java_home -v11)
-alias java11='export JAVA_HOME=$JAVA_11_HOME'
+#export JAVA_11_HOME=$(/usr/libexec/java_home -v11)
+#alias java11='export JAVA_HOME=$JAVA_11_HOME'
 
 eval "$(direnv hook zsh)"
 
 export NVM_DIR="$HOME/.nvm"
-[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
-[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
-
+[ -s "/opt/homebrew/opt/nvm/nvm.sh" ] && . "/opt/homebrew/opt/nvm/nvm.sh"  # This loads nvm
+[ -s "/opt/homebrew/opt/nvm/etc/bash_completion.d/nvm" ] && . "/opt/homebrew/opt/nvm/etc/bash_completion.d/nvm"  # This loads nvm bash_completion
 # Kill all the tabs in Chrome to free up memory
 # [C] explained: http://www.commandlinefu.com/commands/view/402/exclude-grep-from-your-grepped-output-of-ps-alias-included-in-description
 alias chromekill="ps ux | grep '[C]hrome Helper --type=renderer' | grep -v extension-process | tr -s ' ' | cut -d ' ' -f2 | xargs kill"
@@ -55,9 +54,10 @@ alias path='echo -e ${PATH//:/\\n}'
 alias flush="dscacheutil -flushcache && killall -HUP mDNSResponder"
 
 # postgres
-alias postgresstart="pg_ctl -D /usr/local/var/postgres start"
-alias postgresstop="pg_ctl -D /usr/local/var/postgres stop -s -m fast"
-
+alias startpostgres="pg_ctl -D /usr/local/var/postgres start"
+alias stoppostgres="pg_ctl -D /usr/local/var/postgres stop -s -m fast"
+alias startpostgresm1="pg_ctl -D /opt/homebrew/var/postgresql@9.6 start"
+alias stoppostgresm1="pg_ctl -D /opt/homebrew/var/postgresql@9.6 stop -s -m fast"
 
 # Shortcuts
 alias dl="cd ~/Downloads"
@@ -107,6 +107,8 @@ function backup() {
 
 #postgres
 export PATH="$PATH:/usr/local/opt/postgresql@9.6/bin"
+export PATH="$PATH:/opt/homebrew/opt/postgresql@9.6/bin" # M1
+
 
 # heroku
 alias h='heroku'

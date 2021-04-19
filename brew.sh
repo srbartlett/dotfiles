@@ -24,6 +24,7 @@ brew install postgres
 brew install nvm
 brew install rbenv ruby-build rbenv-default-gems rbenv-gemset
 brew install heroku/brew/heroku
+brew install pass
 
 #Apps
 brew install --cask firefox
@@ -32,6 +33,7 @@ brew install --cask brave-browser
 brew install --cask iterm2
 brew install --cask slack
 brew install --cask clipy
+brew install --cask gpg-suite
 
 # Quick look plugins
 brew install --cask qlmarkdown \

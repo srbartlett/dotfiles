@@ -116,7 +116,7 @@ Plugin 'dense-analysis/ale'
 Plugin 'ekalinin/Dockerfile.vim'
 
 " git
-Plugin 'jreybert/vimagit'
+"Plugin 'jreybert/vimagit'
 
 " All of your Plugins must be added before the following line
 call vundle#end()            " required

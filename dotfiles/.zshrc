@@ -74,7 +74,6 @@ plugins=(
   bundler
   git
   osx
-  zsh-nvm
   node
   nvm
   pass
