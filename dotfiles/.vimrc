@@ -41,7 +41,7 @@ Plugin 'copypath.vim'
 "Bundle 'IndexedSearch'
 "Bundle 'xolox/vim-session'
 "Bundle 'Raimondi/delimitMate'
-Plugin 'ervandew/supertab'
+"Plugin 'ervandew/supertab'
 "Bundle 'gregsexton/MatchTag'
 "Bundle 'Shougo/neocomplcache'
 " Snippets
@@ -51,11 +51,11 @@ Plugin 'ervandew/supertab'
 " Language Additions
 "   Ruby
 Plugin 'vim-ruby/vim-ruby'
-Plugin 'tpope/vim-haml'
+"Plugin 'tpope/vim-haml'
 Plugin 'tpope/vim-rails'
 Plugin 'tpope/vim-rake'
 " Rpsec
-Plugin 'skalnik/vim-vroom'
+"Plugin 'skalnik/vim-vroom'
 "   JavaScript
 Plugin 'pangloss/vim-javascript'
 Plugin 'kchmck/vim-coffee-script'
@@ -87,7 +87,7 @@ Plugin 'mathml.vim'
 Plugin 'jpalardy/vim-slime'
 "Plugin 'vim-syntastic/syntastic'
 
-Plugin '907th/vim-auto-save'
+"Plugin '907th/vim-auto-save'
 Plugin 'editorconfig/editorconfig-vim'
 
 Plugin 'elzr/vim-json'
@@ -117,6 +117,13 @@ Plugin 'ekalinin/Dockerfile.vim'
 
 " git
 "Plugin 'jreybert/vimagit'
+
+Plugin 'neoclide/coc.nvim'
+
+Plugin 'thoughtbot/vim-rspec'
+
+" Github permalink
+Plugin 'knsh14/vim-github-link'
 
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
@@ -204,6 +211,7 @@ set hlsearch
 set wildignore+=*.o,*.obj,*.exe,*.so,*.dll,*.pyc,.svn,.hg,.bzr,.git,.sass-cache,*.class,dist/**,*.scssc,target/**,vendor/bundle/**,vendor/ruby/**,coverage/**,tmp/**,reports/**,solr/**,**/bower_components/*,**/node_modules/*,**/build/*,**/tmp/*
 
 let g:ctrlp_custom_ignore = './dist/*'
+let g:ctrlp_max_files = 0
 
 " ---------------
 " Visual
@@ -283,8 +291,8 @@ nmap <leader>b :LustyJuggler<cr>
 "set undofile
 
 " Running tests
-nmap <leader>s :VroomRunTestFile<cr>
-nmap <leader>S :VroomRunNearestTest<cr>
+"nmap <leader>s :VroomRunTestFile<cr>
+"nmap <leader>S :VroomRunNearestTest<cr>
 
 "
 "
@@ -492,3 +500,43 @@ let g:EditorConfig_exclude_patterns = ['fugitive://.*']
 "angular-cli.vim
 autocmd FileType typescript,html call angular_cli#init()
 "autocmd VimEnter * if globpath('.,..','node_modules/@angular') != '' | call angular_cli#init() | endif
+"
+"
+inoremap <silent><expr> <TAB>
+      \ pumvisible() ? "\<C-n>" :
+      \ <SID>check_back_space() ? "\<TAB>" :
+      \ coc#refresh()
+inoremap <expr><S-TAB> pumvisible() ? "\<C-p>" : "\<C-h>"
+
+function! s:check_back_space() abort
+  let col = col('.') - 1
+  return !col || getline('.')[col - 1]  =~# '\s'
+endfunction
+
+let g:coc_global_extensions = ['coc-solargraph']
+
+" coc ttps://github.com/neoclide/coc.nvim
+" auto complete and jump to
+nmap <silent> cd <Plug>(coc-definition)
+nmap <silent> cr <Plug>(coc-references)
+
+" RSpec.vim mappings
+map <Leader>t :call RunCurrentSpecFile()<CR>
+map <Leader>s :call RunNearestSpec()<CR>
+let g:rspec_command = "!bundle exec rspec {spec}"
+
+nnoremap <leader>gs :Gstatus<CR>
+nnoremap <leader>gc :Gcommit -v -q<CR>
+nnoremap <leader>ga :Gcommit --amend<CR>
+nnoremap <leader>gt :Gcommit -v -q %<CR>
+nnoremap <leader>gd :Gdiffsplit<CR>
+nnoremap <leader>ge :Gedit<CR>
+nnoremap <leader>gr :Gread<CR>
+nnoremap <leader>gw :Gwrite<CR><CR>
+nnoremap <leader>gl :0Gclog<CR>
+"nnoremap <leader>gp :Ggrep<Space>
+"nnoremap <leader>gm :Gmove<Space>
+"nnoremap <leader>gb :Git branch<Space>
+"nnoremap <leader>go :Git checkout<Space>
+"nnoremap <leader>gps :Dispatch! git push<CR>
+"nnoremap <leader>gpl :Dispatch! git pull<CR>

@@ -25,6 +25,7 @@ brew install nvm
 brew install rbenv ruby-build rbenv-default-gems rbenv-gemset
 brew install heroku/brew/heroku
 brew install pass
+brew install shared-mime-info # rails dependency
 
 #Apps
 brew install --cask firefox

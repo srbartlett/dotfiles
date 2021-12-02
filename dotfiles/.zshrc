@@ -83,6 +83,7 @@ plugins=(
   ruby
   fzf
   dash
+  rails
 )
 
 #plugins=(git colored-man colorize pip python brew osx zsh-syntax-highlighting zsh-autosuggestions)
