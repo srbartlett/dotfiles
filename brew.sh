@@ -25,7 +25,12 @@ brew install nvm
 brew install rbenv ruby-build rbenv-default-gems rbenv-gemset
 brew install heroku/brew/heroku
 brew install pass
-brew install shared-mime-info # rails dependency
+brew install shared-mime-info # rails eependency
+brew install cfn-lint
+brew install imagemagick
+brew install aws/tap/copilot-cli
+brew install awslog
+brew install python
 
 #Apps
 brew install --cask firefox

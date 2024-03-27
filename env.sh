@@ -13,6 +13,7 @@ alias fm='foreman start'
 
 alias gad='git add -u'
 
+alias c='/Users/stephen/dev/copilot-cli-16/bin/local/copilot-darwin-arm64'
 export EDITOR=vim
 
 unalias g
@@ -166,3 +167,5 @@ heroku-help () {
   echo "  hcc         = heroku config:clear"
   echo
 }
+
+alias rcp='c svc exec --env prod --name app  --command "./config/docker/run_console.sh"'

@@ -210,7 +210,7 @@ set incsearch
 set hlsearch
 set wildignore+=*.o,*.obj,*.exe,*.so,*.dll,*.pyc,.svn,.hg,.bzr,.git,.sass-cache,*.class,dist/**,*.scssc,target/**,vendor/bundle/**,vendor/ruby/**,coverage/**,tmp/**,reports/**,solr/**,**/bower_components/*,**/node_modules/*,**/build/*,**/tmp/*
 
-let g:ctrlp_custom_ignore = './dist/*'
+let g:ctrlp_custom_ignore = 'node_modules\|git\|dist\|tmp\|storage'
 let g:ctrlp_max_files = 0
 
 " ---------------
@@ -525,14 +525,14 @@ map <Leader>t :call RunCurrentSpecFile()<CR>
 map <Leader>s :call RunNearestSpec()<CR>
 let g:rspec_command = "!bundle exec rspec {spec}"
 
-nnoremap <leader>gs :Gstatus<CR>
-nnoremap <leader>gc :Gcommit -v -q<CR>
-nnoremap <leader>ga :Gcommit --amend<CR>
-nnoremap <leader>gt :Gcommit -v -q %<CR>
+nnoremap <leader>gs :Git status<CR>
+nnoremap <leader>gc :Git commit -v -q<CR>
+nnoremap <leader>ga :Git commit --amend<CR>
+nnoremap <leader>gt :Git commit -v -q %<CR>
 nnoremap <leader>gd :Gdiffsplit<CR>
-nnoremap <leader>ge :Gedit<CR>
-nnoremap <leader>gr :Gread<CR>
-nnoremap <leader>gw :Gwrite<CR><CR>
+nnoremap <leader>ge :Git edit<CR>
+nnoremap <leader>gr :Git read<CR>
+nnoremap <leader>gw :Git write<CR><CR>
 nnoremap <leader>gl :0Gclog<CR>
 "nnoremap <leader>gp :Ggrep<Space>
 "nnoremap <leader>gm :Gmove<Space>
