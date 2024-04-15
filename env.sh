@@ -168,4 +168,5 @@ heroku-help () {
   echo
 }
 
+alias c='copilot'
 alias rcp='c svc exec --env prod --name app  --command "./config/docker/run_console.sh"'

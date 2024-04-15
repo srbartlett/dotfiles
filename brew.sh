@@ -31,6 +31,7 @@ brew install imagemagick
 brew install aws/tap/copilot-cli
 brew install awslog
 brew install python
+brew install direnv
 
 #Apps
 brew install --cask firefox
