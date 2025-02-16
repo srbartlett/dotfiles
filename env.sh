@@ -10,6 +10,7 @@ alias zshconfig="vim ~/.zshrc"
 alias ohmyzsh="vim ~/.oh-my-zsh"
 
 alias fm='foreman start'
+alias vi='nvim'
 
 alias gad='git add -u'
 
@@ -169,4 +170,33 @@ heroku-help () {
 }
 
 alias c='copilot'
-alias rcp='c svc exec --env prod --name app  --command "./config/docker/run_console.sh"'
+alias rcp='c svc exec --env us-prod --name app  --command "./config/docker/run_console.sh"'
+
+# Source secrets from external file which is not version controlled
+source ~/dev/dotfiles/secrets.env
+
+function commitmsg() {
+  rbenv version 3.2
+  lc issue list $1 --full | ~/dev/chatgpt.sh -i "You are a software developer with expert skills in writing a git commit message. Write a one line Git commit message for this issue.  Prefix with feat: fix: chore: refactor: depending on the change and also include the linear issue number"
+}
+
+function prmsg() {
+  rbenv version 3.2
+  lc issue list $1 --full | ~/dev/chatgpt.sh -i "You are a software developer with expert skills in writing a PR description. Write one or two sentences to describe a PR description for this issue  line Git commit message for this issue: "
+}
+
+function prdesc() {
+  # gh pr diff
+  git diff origin/main | ~/dev/chatgpt.sh -m gpt-4o --max-tokens 1000 -i "Please write a pull request for the code supplied using the following structure:  Overview and Implemenation"
+}
+
+function prtestpilot() {
+  gh pr diff | ~/dev/chatgpt.sh -m gpt-4o --max-tokens 800 -i "Please can you help me write a test strategy for this feature, giving preference to testing the application in a web browser"
+}
+
+export OPENAI_API_KEY=$OPENAI_KEY
+alias pip='pip3'
+alias python='python'
+alias run_sidekiq="rails runner 'Sidekiq.redis { |conn| conn.flushdb }' && bundle exec sidekiq --config ./config/sidekiq.yml"
+
+export HOMEBREW_NO_INSTALLED_DEPENDENTS_CHECK=1

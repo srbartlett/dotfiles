@@ -124,6 +124,8 @@ Plugin 'thoughtbot/vim-rspec'
 
 " Github permalink
 Plugin 'knsh14/vim-github-link'
+Plugin 'https://github.com/CoderCookE/vim-chatgpt'
+Plugin 'https://github.com/jmcantrell/vim-virtualenv'
 
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
@@ -247,6 +249,11 @@ imap <F1> <Esc>
 
 " Disable the ever-annoying Ex mode shortcut key. Type visual my ass.
 nmap Q <nop>
+
+" resize vertical split
+nnoremap <leader>x :vertical resize +15<CR>
+nnoremap <leader>z :vertical resize -15<CR>
+
 
 "set formatoptions=croqln
 "set formatoptions=croqln
@@ -563,3 +570,29 @@ nnoremap <leader>gl :0Gclog<CR>
 "nnoremap <leader>go :Git checkout<Space>
 "nnoremap <leader>gps :Dispatch! git push<CR>
 "nnoremap <leader>gpl :Dispatch! git pull<CR>
+"
+"
+"
+
+" ChatGPT
+" https://github.com/CoderCookE/vim-chatgpt
+" source ~/venv/bin/activate
+" Ask: Ask a question
+" Rewrite: Ask the model to rewrite a code snippet more idiomatically
+" Review: Request a code review
+" Document: Request documentation for a code snippet
+" Explain: Ask the model to explain how a code snippet works
+" Test: Ask the model to write a test for a code snippet
+" Fix: Ask the model to fix an error in a code snippet
+let g:chat_gpt_max_tokens=1000
+let g:chat_gpt_model='gpt-4o'
+let g:chat_gpt_session_mode=1
+let g:chat_gpt_temperature = 0.7
+let g:chat_gpt_split_direction = 'vertical'
+let g:split_ratio=4
+let g:chat_gpt_custom_persona = {'rails': 'You are an expert in Ruby on Rails development, including Javascript, Stimulus and Hotwire. Avoid writing too much boiler plate'}
+let g:chat_persona='rails'
+
+
+nnoremap <Leader>d :exe "resize " . (winheight(0) * 3/2)<CR>
+

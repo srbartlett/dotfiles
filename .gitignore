@@ -40,3 +40,5 @@ Temporary Items
 
 # No logs
 *.log
+
+secrets.env
