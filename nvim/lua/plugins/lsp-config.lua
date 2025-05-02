@@ -23,7 +23,17 @@ return {
 
       local lspconfig = require("lspconfig")
       lspconfig.ruby_lsp.setup({
-        capabilities = capabilities
+        capabilities = capabilities,
+        settings = {
+          rubyLsp = {
+            diagnostics = false,
+            completion = true,
+            formatting = true,
+            workspace = {
+              symbol = { enable = true },
+            },
+          },
+        }
       })
 
       lspconfig.stimulus_ls.setup({
@@ -45,8 +55,9 @@ return {
 
       vim.keymap.set("n", "K", vim.lsp.buf.hover, {})
 
-      vim.keymap.set("n", "<leader>ca", vim.lsp.buf.code_action, {})
-      vim.keymap.set("n", "<leader>gf", vim.lsp.buf.format, {})
+      vim.keymap.set("n", "<leader>ca", vim.lsp.buf.code_action, {desc = "Code action"})
+      vim.keymap.set("n", "<leader>cf", vim.lsp.buf.format, {desc = "Code format"})
+      -- vim.keymap.set("n", "<leader>rn", vim.lsp.buf.rename, {})
       -- vim.keymap.set("n", "<leader>gd", vim.lsp.buf.definition, {})
       -- vim.keymap.set("n", "<leader>gr", vim.lsp.buf.references, {})
       -- vim.keymap.set('n', '<leader>rn', vim.lsp.buf.rename, {})

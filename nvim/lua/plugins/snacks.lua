@@ -26,7 +26,10 @@ return {
     quickfile = { enabled = false },
     scroll = { enabled = false },
     statuscolumn = { enabled = false },
-    git = { enabled = true },
+    git = { 
+      enabled = true,
+      branch = main,
+    },
     words = { enabled = false },
     lazygit = { enabled = true },
   },
@@ -34,5 +37,7 @@ return {
     { "<leader>gg", function() Snacks.lazygit() end, desc = "Lazygit" },
     { "<leader>gB", function() Snacks.gitbrowse() end, desc = "Git Browse", mode = { "n", "v" } },
     { "<leader>gb", function() Snacks.git.blame_line() end, desc = "Git Blame Line" },
+    { "<leader>gf", function() Snacks.picker.git_log_file() end, desc = "Git Log File" },
+    { "<leader>gl", function() Snacks.picker.git_log_line() end, desc = "Git Log Line" },
   },
 }

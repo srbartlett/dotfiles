@@ -187,7 +187,7 @@ function prmsg() {
 
 function prdesc() {
   # gh pr diff
-  git diff origin/main | ~/dev/chatgpt.sh -m gpt-4o --max-tokens 1000 -i "Please write a pull request for the code supplied using the following structure:  Overview and Implemenation"
+  git diff origin/main | ~/dev/chatgpt.sh -m gpt-4o --max-tokens 1000 -i "Please write a pull request for the code supplied using the following structure:  Overview and Implemenation. And also the short PR title"
 }
 
 function prtestpilot() {

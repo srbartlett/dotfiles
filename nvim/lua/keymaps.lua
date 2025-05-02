@@ -42,7 +42,7 @@ vim.api.nvim_create_user_command("Wq", "wq", {})
 
 
 -- Snacks dashboard
-vim.keymap.set('n', '<leader>s', ':Snacks<CR>', { noremap = true, silent = true })
+vim.keymap.set('n', '<leader>s', ':Snacks<CR>', { noremap = true, silent = true, desc = "Snacks dashboard"})
 --
 -- Map <leader>w to create a vertical split and move to it
 vim.keymap.set('n', '<leader>w', '<C-w>v<C-w>l', { noremap = true, silent = true })

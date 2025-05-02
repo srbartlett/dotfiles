@@ -31,7 +31,7 @@ return {
       behaviour = {
         auto_suggestions = false,
       },
-      -- provider = "openai",
+     -- provider = "openai",
      provider = "claude", -- Recommend using Claude
       -- WARNING: Since auto-suggestions are a high-frequency operation and therefore expensive,
       -- currently designating it as `copilot` provider is dangerous because: https://github.com/yetone/avante.nvim/issues/1048

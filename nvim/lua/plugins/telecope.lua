@@ -26,7 +26,7 @@ return {
       vim.keymap.set("n", "<leader-p>", builtin.find_files, {noremap = true, silent = true,  desc = 'Telescope find files' })
       vim.keymap.set("n", "<leader>a", builtin.live_grep, {noremap = true, silent = true,  desc = 'Telescope grep' })
       vim.keymap.set("n", "<C-e>", builtin.oldfiles, {noremap = true, silent = true,  desc = 'Telescope previously opened files' })
-      vim.keymap.set("n", "<leader>gl", builtin.git_bcommits, {noremap = true, silent = true,  desc = 'Telescope git log for current file'})
+      -- vim.keymap.set("n", "<leader>gl", builtin.git_bcommits, {noremap = true, silent = true,  desc = 'Telescope git log for current file'})
       vim.keymap.set("n", "<leader>tm", builtin.keymaps, {noremap = true, silent = true,  desc = 'Telescope keymaps'})
       vim.keymap.set('n', '<C-w>', builtin.buffers, {noremap = true, silent = true,  desc = 'Telescope buffers' })
       vim.keymap.set('n', '<leader>ff', builtin.grep_string, {noremap = true, silent = true,  desc = 'Telescope grep for word under cursor' })

@@ -34,7 +34,7 @@ vim.api.nvim_set_keymap("n", "<leader>ev", ":lua ReloadConfig()<CR>", { noremap 
 
 
 
-vim.lsp.set_log_level("debug")
+--vim.lsp.set_log_level("debug")
 
 --require('plugins.lazy')
 --require('plugins.keymaps')
