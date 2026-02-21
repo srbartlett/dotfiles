@@ -2,12 +2,12 @@
 
 #Check if Homebrew is installed
 which -s brew
-if [[ $? != 0 ]] ; then
-    # Install Homebrew
-    echo 'Please install Homebrew before running this script'
-    exit -1
+if [[ $? != 0 ]]; then
+  # Install Homebrew
+  echo 'Please install Homebrew before running this script'
+  exit -1
 else
-    brew update
+  brew update
 fi
 
 #Upgrade installed formulae
@@ -32,6 +32,7 @@ brew install aws/tap/copilot-cli
 brew install awslog
 brew install python
 brew install direnv
+brew install yt-dlp # youtube transcript downloader
 
 #Apps
 brew install --cask firefox

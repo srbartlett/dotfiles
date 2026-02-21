@@ -14,7 +14,14 @@ alias vi='nvim'
 
 alias gad='git add -u'
 
-alias c='/Users/stephen/dev/copilot-cli-16/bin/local/copilot-darwin-arm64'
+alias claude-skip='claude --allow-dangerously-skip-permissions'
+
+export KNOWLEDGE_DIR="${KNOWLEDGE_DIR:-$HOME/Library/Mobile\ Documents/com~apple~CloudDocs/Documents/knowledge/youtube}"
+alias save-playlist='~/dev/dotfiles/bin/save-playlist.sh'
+save-video() {
+  "$HOME/dev/dotfiles/bin/save-video.sh" "$@"
+}
+
 export EDITOR=vim
 
 unalias g
