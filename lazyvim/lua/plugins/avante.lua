@@ -1,88 +1,64 @@
+-- Disable since using Claude Code
+if true then
+	return {}
+end
+
 return {
-  {
-    "yetone/avante.nvim",
-    event = "VeryLazy",
-    dependencies = {
-      "stevearc/dressing.nvim",
-      "ibhagwan/fzf-lua",
-    },
-    opts = {
-      -- Default configuration
-      hints = { enabled = false },
-
-      ---@alias AvanteProvider "claude" | "openai" | "azure" | "gemini" | "cohere" | "copilot" | string
-      provider = "claude", -- Recommend using Claude
-      --auto_suggestions_provider = "claude", -- Since auto-suggestions are a high-frequency operation and therefore expensive, it is recommended to specify an inexpensive provider or even a free provider: copilot
-      claude = {
-        endpoint = "https://api.anthropic.com",
-        model = "claude-3-5-sonnet-20241022",
-        temperature = 0,
-        max_tokens = 4096,
-        disable_tools = true,
-      },
-
-      -- File selector configuration
-      --- @alias FileSelectorProvider "native" | "fzf" | "mini.pick" | "snacks" | "telescope" | string
-      file_selector = {
-        provider = "fzf", -- Avoid native provider issues
-        provider_opts = {},
-      },
-    },
-    build = LazyVim.is_win() and "powershell -ExecutionPolicy Bypass -File Build.ps1 -BuildFromSource false" or "make",
-  },
-  {
-    "saghen/blink.cmp",
-    lazy = true,
-    dependencies = { "saghen/blink.compat" },
-    opts = {
-      sources = {
-        default = { "avante_commands", "avante_mentions", "avante_files" },
-        compat = {
-          "avante_commands",
-          "avante_mentions",
-          "avante_files",
-        },
-        -- LSP score_offset is typically 60
-        providers = {
-          avante_commands = {
-            name = "avante_commands",
-            module = "blink.compat.source",
-            score_offset = 90,
-            opts = {},
-          },
-          avante_files = {
-            name = "avante_files",
-            module = "blink.compat.source",
-            score_offset = 100,
-            opts = {},
-          },
-          avante_mentions = {
-            name = "avante_mentions",
-            module = "blink.compat.source",
-            score_offset = 1000,
-            opts = {},
-          },
-        },
-      },
-    },
-  },
-  {
-    "MeanderingProgrammer/render-markdown.nvim",
-    optional = true,
-    ft = function(_, ft)
-      vim.list_extend(ft, { "Avante" })
-    end,
-    opts = function(_, opts)
-      opts.file_types = vim.list_extend(opts.file_types or {}, { "Avante" })
-    end,
-  },
-  {
-    "folke/which-key.nvim",
-    optional = true,
-    opts = {
-      spec = {
-        { "<leader>a", group = "ai" },
-      },
-    },
-  },
+	"yetone/avante.nvim",
+	-- if you want to build from source then do `make BUILD_FROM_SOURCE=true`
+	-- ⚠️ must add this setting! ! !
+	build = vim.fn.has("win32") and "powershell -ExecutionPolicy Bypass -File Build.ps1 -BuildFromSource false"
+		or "make",
+	event = "VeryLazy",
+	version = false, -- Never set this value to "*"! Never!
+	---@module 'avante'
+	---@type avante.Config
+	opts = {
+		-- add any opts here
+		-- for example
+		-- provider = "claude",
+		providers = {
+			claude = {
+				endpoint = "https://api.anthropic.com",
+				-- model = "claude-sonnet-4-20250514",
+				model = "claude-sonnet-3-7",
+				timeout = 30000, -- Timeout in milliseconds
+				extra_request_body = {
+					temperature = 0.75,
+					max_tokens = 20480,
+				},
+			},
+		},
+	},
+	dependencies = {
+		"nvim-lua/plenary.nvim",
+		"MunifTanjim/nui.nvim",
+		--- The below dependencies are optional,
+		"echasnovski/mini.pick", -- for file_selector provider mini.pick
+		"nvim-telescope/telescope.nvim", -- for file_selector provider telescope
+		"hrsh7th/nvim-cmp", -- autocompletion for avante commands and mentions
+		"ibhagwan/fzf-lua", -- for file_selector provider fzf
+		"stevearc/dressing.nvim", -- for input provider dressing
+		"folke/snacks.nvim", -- for input provider snacks
+		"nvim-tree/nvim-web-devicons", -- or echasnovski/mini.icons
+		{
+			"MeanderingProgrammer/render-markdown.nvim",
+			optional = true,
+			ft = function(_, ft)
+				vim.list_extend(ft, { "Avante" })
+			end,
+			opts = function(_, opts)
+				opts.file_types = vim.list_extend(opts.file_types or {}, { "Avante" })
+			end,
+		},
+		{
+			"folke/which-key.nvim",
+			optional = true,
+			opts = {
+				spec = {
+					{ "<leader>a", group = "ai" },
+				},
+			},
+		},
+	},
 }
